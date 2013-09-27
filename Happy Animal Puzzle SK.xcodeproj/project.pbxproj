@@ -31,7 +31,6 @@
 		8ADF5E2717F56FB800BB6731 /* block.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8ADF5DEF17F56FB800BB6731 /* block.mp3 */; };
 		8ADF5E2817F56FB800BB6731 /* click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8ADF5DF017F56FB800BB6731 /* click.mp3 */; };
 		8ADF5E2917F56FB800BB6731 /* finish.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8ADF5DF117F56FB800BB6731 /* finish.wav */; };
-		8ADF5E2D17F570F200BB6731 /* CGPointExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADF5E2C17F570F200BB6731 /* CGPointExtension.m */; };
 		8ADF5E6017F5730B00BB6731 /* animal_0_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ADF5E2E17F5730B00BB6731 /* animal_0_0.png */; };
 		8ADF5E6117F5730B00BB6731 /* animal_0_0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ADF5E2F17F5730B00BB6731 /* animal_0_0@2x.png */; };
 		8ADF5E6217F5730B00BB6731 /* animal_0_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ADF5E3017F5730B00BB6731 /* animal_0_1.png */; };
@@ -82,6 +81,7 @@
 		8ADF5E9017F5730B00BB6731 /* ocean_book_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ADF5E5E17F5730B00BB6731 /* ocean_book_open.png */; };
 		8ADF5E9117F5730B00BB6731 /* ocean_book_open@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ADF5E5F17F5730B00BB6731 /* ocean_book_open@2x.png */; };
 		8ADF5E9317F5768600BB6731 /* main_menu_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ADF5E9217F5768600BB6731 /* main_menu_bg@2x.png */; };
+		8ADF5E9617F57A6800BB6731 /* SKHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADF5E9517F57A6700BB6731 /* SKHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,8 +127,6 @@
 		8ADF5DEF17F56FB800BB6731 /* block.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = block.mp3; sourceTree = "<group>"; };
 		8ADF5DF017F56FB800BB6731 /* click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = click.mp3; sourceTree = "<group>"; };
 		8ADF5DF117F56FB800BB6731 /* finish.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = finish.wav; sourceTree = "<group>"; };
-		8ADF5E2B17F570F200BB6731 /* CGPointExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPointExtension.h; sourceTree = "<group>"; };
-		8ADF5E2C17F570F200BB6731 /* CGPointExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGPointExtension.m; sourceTree = "<group>"; };
 		8ADF5E2E17F5730B00BB6731 /* animal_0_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = animal_0_0.png; sourceTree = "<group>"; };
 		8ADF5E2F17F5730B00BB6731 /* animal_0_0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "animal_0_0@2x.png"; sourceTree = "<group>"; };
 		8ADF5E3017F5730B00BB6731 /* animal_0_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = animal_0_1.png; sourceTree = "<group>"; };
@@ -179,6 +177,8 @@
 		8ADF5E5E17F5730B00BB6731 /* ocean_book_open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ocean_book_open.png; sourceTree = "<group>"; };
 		8ADF5E5F17F5730B00BB6731 /* ocean_book_open@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ocean_book_open@2x.png"; sourceTree = "<group>"; };
 		8ADF5E9217F5768600BB6731 /* main_menu_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_menu_bg@2x.png"; sourceTree = "<group>"; };
+		8ADF5E9417F57A6700BB6731 /* SKHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKHelper.h; sourceTree = "<group>"; };
+		8ADF5E9517F57A6700BB6731 /* SKHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,8 +240,8 @@
 		8ADF5D7E17F56D7A00BB6731 /* Happy Animal Puzzle SK */ = {
 			isa = PBXGroup;
 			children = (
-				8ADF5E2B17F570F200BB6731 /* CGPointExtension.h */,
-				8ADF5E2C17F570F200BB6731 /* CGPointExtension.m */,
+				8ADF5E9417F57A6700BB6731 /* SKHelper.h */,
+				8ADF5E9517F57A6700BB6731 /* SKHelper.m */,
 				8ADF5D8717F56D7A00BB6731 /* AppDelegate.h */,
 				8ADF5D8817F56D7A00BB6731 /* AppDelegate.m */,
 				8ADF5D8A17F56D7A00BB6731 /* Main.storyboard */,
@@ -514,12 +514,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				8ADF5D9217F56D7A00BB6731 /* MenuScene.m in Sources */,
+				8ADF5E9617F57A6800BB6731 /* SKHelper.m in Sources */,
 				8ADF5D8F17F56D7A00BB6731 /* ViewController.m in Sources */,
 				8ADF5D8917F56D7A00BB6731 /* AppDelegate.m in Sources */,
 				8ADF5DB417F56EDB00BB6731 /* BookScene.m in Sources */,
 				8ADF5DB717F56EEB00BB6731 /* GameScene.m in Sources */,
 				8ADF5D8517F56D7A00BB6731 /* main.m in Sources */,
-				8ADF5E2D17F570F200BB6731 /* CGPointExtension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

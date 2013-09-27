@@ -12,7 +12,7 @@
 
 - (void)createContent {
     SKSpriteNode *bg = [SKSpriteNode spriteNodeWithImageNamed:@"main_menu_bg.png"];
-    bg.position = ccp(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
+    bg.position = skp(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
     [self addChild:bg];
     
 //    [self createLogo];
@@ -24,24 +24,24 @@
 
 - (void)createLogo {
     SKSpriteNode *logo = [SKSpriteNode spriteNodeWithImageNamed:@"logo.png"];
-    logo.position = ccp(CGRectGetMidX(self.frame), self.frame.size.height - 100);
+    logo.position = skp(CGRectGetMidX(self.frame), self.frame.size.height - 100);
     [self addChild:logo];
     logo.name = @"logo";
     
     SKSpriteNode *eye1 = [SKSpriteNode spriteNodeWithImageNamed:@"eye_0.png"];
-    eye1.position = ccp(73, 122);
+    eye1.position = skp(73, 122);
     [logo addChild:eye1];
     
     SKSpriteNode *eye2 = [SKSpriteNode spriteNodeWithImageNamed:@"eye_0.png"];
-    eye2.position = ccp(100, 127);
+    eye2.position = skp(100, 127);
     [logo addChild:eye2];
     
     SKSpriteNode *eye3 = [SKSpriteNode spriteNodeWithImageNamed:@"eye_0.png"];
-    eye3.position = ccp(312, 125);
+    eye3.position = skp(312, 125);
     [logo addChild:eye3];
     
     SKSpriteNode *eye4 = [SKSpriteNode spriteNodeWithImageNamed:@"eye_0.png"];
-    eye4.position = ccp(342, 127);
+    eye4.position = skp(342, 127);
     [logo addChild:eye4];
     
 //    [NSTimer scheduledTimerWithTimeInterval:5.0f
