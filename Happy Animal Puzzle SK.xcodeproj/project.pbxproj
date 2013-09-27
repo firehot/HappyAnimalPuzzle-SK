@@ -1,0 +1,493 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8ADF5D7717F56D7A00BB6731 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ADF5D7617F56D7A00BB6731 /* Foundation.framework */; };
+		8ADF5D7917F56D7A00BB6731 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ADF5D7817F56D7A00BB6731 /* CoreGraphics.framework */; };
+		8ADF5D7B17F56D7A00BB6731 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ADF5D7A17F56D7A00BB6731 /* UIKit.framework */; };
+		8ADF5D7D17F56D7A00BB6731 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ADF5D7C17F56D7A00BB6731 /* SpriteKit.framework */; };
+		8ADF5D8317F56D7A00BB6731 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8ADF5D8117F56D7A00BB6731 /* InfoPlist.strings */; };
+		8ADF5D8517F56D7A00BB6731 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADF5D8417F56D7A00BB6731 /* main.m */; };
+		8ADF5D8917F56D7A00BB6731 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADF5D8817F56D7A00BB6731 /* AppDelegate.m */; };
+		8ADF5D8C17F56D7A00BB6731 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ADF5D8A17F56D7A00BB6731 /* Main.storyboard */; };
+		8ADF5D8F17F56D7A00BB6731 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADF5D8E17F56D7A00BB6731 /* ViewController.m */; };
+		8ADF5D9217F56D7A00BB6731 /* MyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADF5D9117F56D7A00BB6731 /* MyScene.m */; };
+		8ADF5D9417F56D7A00BB6731 /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ADF5D9317F56D7A00BB6731 /* Spaceship.png */; };
+		8ADF5D9617F56D7A00BB6731 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ADF5D9517F56D7A00BB6731 /* Images.xcassets */; };
+		8ADF5D9D17F56D7B00BB6731 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ADF5D9C17F56D7B00BB6731 /* XCTest.framework */; };
+		8ADF5D9E17F56D7B00BB6731 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ADF5D7617F56D7A00BB6731 /* Foundation.framework */; };
+		8ADF5D9F17F56D7B00BB6731 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ADF5D7A17F56D7A00BB6731 /* UIKit.framework */; };
+		8ADF5DA717F56D7B00BB6731 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8ADF5DA517F56D7B00BB6731 /* InfoPlist.strings */; };
+		8ADF5DA917F56D7B00BB6731 /* Happy_Animal_Puzzle_SKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADF5DA817F56D7B00BB6731 /* Happy_Animal_Puzzle_SKTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8ADF5DA017F56D7B00BB6731 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8ADF5D6B17F56D7A00BB6731 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8ADF5D7217F56D7A00BB6731;
+			remoteInfo = "Happy Animal Puzzle SK";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8ADF5D7317F56D7A00BB6731 /* Happy Animal Puzzle SK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Happy Animal Puzzle SK.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8ADF5D7617F56D7A00BB6731 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		8ADF5D7817F56D7A00BB6731 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		8ADF5D7A17F56D7A00BB6731 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		8ADF5D7C17F56D7A00BB6731 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		8ADF5D8017F56D7A00BB6731 /* Happy Animal Puzzle SK-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Happy Animal Puzzle SK-Info.plist"; sourceTree = "<group>"; };
+		8ADF5D8217F56D7A00BB6731 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8ADF5D8417F56D7A00BB6731 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8ADF5D8617F56D7A00BB6731 /* Happy Animal Puzzle SK-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Happy Animal Puzzle SK-Prefix.pch"; sourceTree = "<group>"; };
+		8ADF5D8717F56D7A00BB6731 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		8ADF5D8817F56D7A00BB6731 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		8ADF5D8B17F56D7A00BB6731 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8ADF5D8D17F56D7A00BB6731 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		8ADF5D8E17F56D7A00BB6731 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		8ADF5D9017F56D7A00BB6731 /* MyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyScene.h; sourceTree = "<group>"; };
+		8ADF5D9117F56D7A00BB6731 /* MyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyScene.m; sourceTree = "<group>"; };
+		8ADF5D9317F56D7A00BB6731 /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
+		8ADF5D9517F56D7A00BB6731 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		8ADF5D9B17F56D7B00BB6731 /* Happy Animal Puzzle SKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Happy Animal Puzzle SKTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8ADF5D9C17F56D7B00BB6731 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		8ADF5DA417F56D7B00BB6731 /* Happy Animal Puzzle SKTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Happy Animal Puzzle SKTests-Info.plist"; sourceTree = "<group>"; };
+		8ADF5DA617F56D7B00BB6731 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8ADF5DA817F56D7B00BB6731 /* Happy_Animal_Puzzle_SKTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Happy_Animal_Puzzle_SKTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8ADF5D7017F56D7A00BB6731 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8ADF5D7917F56D7A00BB6731 /* CoreGraphics.framework in Frameworks */,
+				8ADF5D7B17F56D7A00BB6731 /* UIKit.framework in Frameworks */,
+				8ADF5D7D17F56D7A00BB6731 /* SpriteKit.framework in Frameworks */,
+				8ADF5D7717F56D7A00BB6731 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8ADF5D9817F56D7B00BB6731 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8ADF5D9D17F56D7B00BB6731 /* XCTest.framework in Frameworks */,
+				8ADF5D9F17F56D7B00BB6731 /* UIKit.framework in Frameworks */,
+				8ADF5D9E17F56D7B00BB6731 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8ADF5D6A17F56D7A00BB6731 = {
+			isa = PBXGroup;
+			children = (
+				8ADF5D7E17F56D7A00BB6731 /* Happy Animal Puzzle SK */,
+				8ADF5DA217F56D7B00BB6731 /* Happy Animal Puzzle SKTests */,
+				8ADF5D7517F56D7A00BB6731 /* Frameworks */,
+				8ADF5D7417F56D7A00BB6731 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8ADF5D7417F56D7A00BB6731 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8ADF5D7317F56D7A00BB6731 /* Happy Animal Puzzle SK.app */,
+				8ADF5D9B17F56D7B00BB6731 /* Happy Animal Puzzle SKTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8ADF5D7517F56D7A00BB6731 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8ADF5D7617F56D7A00BB6731 /* Foundation.framework */,
+				8ADF5D7817F56D7A00BB6731 /* CoreGraphics.framework */,
+				8ADF5D7A17F56D7A00BB6731 /* UIKit.framework */,
+				8ADF5D7C17F56D7A00BB6731 /* SpriteKit.framework */,
+				8ADF5D9C17F56D7B00BB6731 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8ADF5D7E17F56D7A00BB6731 /* Happy Animal Puzzle SK */ = {
+			isa = PBXGroup;
+			children = (
+				8ADF5D8717F56D7A00BB6731 /* AppDelegate.h */,
+				8ADF5D8817F56D7A00BB6731 /* AppDelegate.m */,
+				8ADF5D8A17F56D7A00BB6731 /* Main.storyboard */,
+				8ADF5D8D17F56D7A00BB6731 /* ViewController.h */,
+				8ADF5D8E17F56D7A00BB6731 /* ViewController.m */,
+				8ADF5D9017F56D7A00BB6731 /* MyScene.h */,
+				8ADF5D9117F56D7A00BB6731 /* MyScene.m */,
+				8ADF5D9317F56D7A00BB6731 /* Spaceship.png */,
+				8ADF5D9517F56D7A00BB6731 /* Images.xcassets */,
+				8ADF5D7F17F56D7A00BB6731 /* Supporting Files */,
+			);
+			path = "Happy Animal Puzzle SK";
+			sourceTree = "<group>";
+		};
+		8ADF5D7F17F56D7A00BB6731 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8ADF5D8017F56D7A00BB6731 /* Happy Animal Puzzle SK-Info.plist */,
+				8ADF5D8117F56D7A00BB6731 /* InfoPlist.strings */,
+				8ADF5D8417F56D7A00BB6731 /* main.m */,
+				8ADF5D8617F56D7A00BB6731 /* Happy Animal Puzzle SK-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8ADF5DA217F56D7B00BB6731 /* Happy Animal Puzzle SKTests */ = {
+			isa = PBXGroup;
+			children = (
+				8ADF5DA817F56D7B00BB6731 /* Happy_Animal_Puzzle_SKTests.m */,
+				8ADF5DA317F56D7B00BB6731 /* Supporting Files */,
+			);
+			path = "Happy Animal Puzzle SKTests";
+			sourceTree = "<group>";
+		};
+		8ADF5DA317F56D7B00BB6731 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8ADF5DA417F56D7B00BB6731 /* Happy Animal Puzzle SKTests-Info.plist */,
+				8ADF5DA517F56D7B00BB6731 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8ADF5D7217F56D7A00BB6731 /* Happy Animal Puzzle SK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8ADF5DAC17F56D7B00BB6731 /* Build configuration list for PBXNativeTarget "Happy Animal Puzzle SK" */;
+			buildPhases = (
+				8ADF5D6F17F56D7A00BB6731 /* Sources */,
+				8ADF5D7017F56D7A00BB6731 /* Frameworks */,
+				8ADF5D7117F56D7A00BB6731 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Happy Animal Puzzle SK";
+			productName = "Happy Animal Puzzle SK";
+			productReference = 8ADF5D7317F56D7A00BB6731 /* Happy Animal Puzzle SK.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8ADF5D9A17F56D7B00BB6731 /* Happy Animal Puzzle SKTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8ADF5DAF17F56D7B00BB6731 /* Build configuration list for PBXNativeTarget "Happy Animal Puzzle SKTests" */;
+			buildPhases = (
+				8ADF5D9717F56D7B00BB6731 /* Sources */,
+				8ADF5D9817F56D7B00BB6731 /* Frameworks */,
+				8ADF5D9917F56D7B00BB6731 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8ADF5DA117F56D7B00BB6731 /* PBXTargetDependency */,
+			);
+			name = "Happy Animal Puzzle SKTests";
+			productName = "Happy Animal Puzzle SKTests";
+			productReference = 8ADF5D9B17F56D7B00BB6731 /* Happy Animal Puzzle SKTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8ADF5D6B17F56D7A00BB6731 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "MopCat Games";
+				TargetAttributes = {
+					8ADF5D9A17F56D7B00BB6731 = {
+						TestTargetID = 8ADF5D7217F56D7A00BB6731;
+					};
+				};
+			};
+			buildConfigurationList = 8ADF5D6E17F56D7A00BB6731 /* Build configuration list for PBXProject "Happy Animal Puzzle SK" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8ADF5D6A17F56D7A00BB6731;
+			productRefGroup = 8ADF5D7417F56D7A00BB6731 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8ADF5D7217F56D7A00BB6731 /* Happy Animal Puzzle SK */,
+				8ADF5D9A17F56D7B00BB6731 /* Happy Animal Puzzle SKTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8ADF5D7117F56D7A00BB6731 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8ADF5D8317F56D7A00BB6731 /* InfoPlist.strings in Resources */,
+				8ADF5D9617F56D7A00BB6731 /* Images.xcassets in Resources */,
+				8ADF5D9417F56D7A00BB6731 /* Spaceship.png in Resources */,
+				8ADF5D8C17F56D7A00BB6731 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8ADF5D9917F56D7B00BB6731 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8ADF5DA717F56D7B00BB6731 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8ADF5D6F17F56D7A00BB6731 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8ADF5D9217F56D7A00BB6731 /* MyScene.m in Sources */,
+				8ADF5D8F17F56D7A00BB6731 /* ViewController.m in Sources */,
+				8ADF5D8917F56D7A00BB6731 /* AppDelegate.m in Sources */,
+				8ADF5D8517F56D7A00BB6731 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8ADF5D9717F56D7B00BB6731 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8ADF5DA917F56D7B00BB6731 /* Happy_Animal_Puzzle_SKTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8ADF5DA117F56D7B00BB6731 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8ADF5D7217F56D7A00BB6731 /* Happy Animal Puzzle SK */;
+			targetProxy = 8ADF5DA017F56D7B00BB6731 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8ADF5D8117F56D7A00BB6731 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8ADF5D8217F56D7A00BB6731 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		8ADF5D8A17F56D7A00BB6731 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8ADF5D8B17F56D7A00BB6731 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8ADF5DA517F56D7B00BB6731 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8ADF5DA617F56D7B00BB6731 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8ADF5DAA17F56D7B00BB6731 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		8ADF5DAB17F56D7B00BB6731 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8ADF5DAD17F56D7B00BB6731 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Happy Animal Puzzle SK/Happy Animal Puzzle SK-Prefix.pch";
+				INFOPLIST_FILE = "Happy Animal Puzzle SK/Happy Animal Puzzle SK-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		8ADF5DAE17F56D7B00BB6731 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Happy Animal Puzzle SK/Happy Animal Puzzle SK-Prefix.pch";
+				INFOPLIST_FILE = "Happy Animal Puzzle SK/Happy Animal Puzzle SK-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		8ADF5DB017F56D7B00BB6731 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Happy Animal Puzzle SK.app/Happy Animal Puzzle SK";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Happy Animal Puzzle SK/Happy Animal Puzzle SK-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Happy Animal Puzzle SKTests/Happy Animal Puzzle SKTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		8ADF5DB117F56D7B00BB6731 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Happy Animal Puzzle SK.app/Happy Animal Puzzle SK";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Happy Animal Puzzle SK/Happy Animal Puzzle SK-Prefix.pch";
+				INFOPLIST_FILE = "Happy Animal Puzzle SKTests/Happy Animal Puzzle SKTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8ADF5D6E17F56D7A00BB6731 /* Build configuration list for PBXProject "Happy Animal Puzzle SK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8ADF5DAA17F56D7B00BB6731 /* Debug */,
+				8ADF5DAB17F56D7B00BB6731 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8ADF5DAC17F56D7B00BB6731 /* Build configuration list for PBXNativeTarget "Happy Animal Puzzle SK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8ADF5DAD17F56D7B00BB6731 /* Debug */,
+				8ADF5DAE17F56D7B00BB6731 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		8ADF5DAF17F56D7B00BB6731 /* Build configuration list for PBXNativeTarget "Happy Animal Puzzle SKTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8ADF5DB017F56D7B00BB6731 /* Debug */,
+				8ADF5DB117F56D7B00BB6731 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8ADF5D6B17F56D7A00BB6731 /* Project object */;
+}
