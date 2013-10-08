@@ -15,4 +15,6 @@
     #import <Foundation/Foundation.h>
     #import "SKHelper.h"
     #import "SKScene+Helper.h"
+    #import "SKSpriteButtonNode.h"
+    #import "Utility.h"
 #endif

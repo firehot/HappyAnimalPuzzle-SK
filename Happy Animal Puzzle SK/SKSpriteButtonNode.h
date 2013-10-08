@@ -8,10 +8,10 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface SKSpriteButtonNode : SKNode
+@interface SKSpriteButtonNode : SKSpriteNode
 
-+ (instancetype)buttonNodeWithNormalSprite:(SKSpriteNode *)normalSprite
-                            selectedSprite:(SKSpriteNode *)selectedSprite
-                                     block:(void(^)(id sender))block;
++ (instancetype)buttonNodeWithNormalTexture:(SKTexture *)normalTexture
+                            selectedTexture:(SKTexture *)selectedTexture
+                                      block:(void(^)(id sender))block;
 
 @end

@@ -9,11 +9,27 @@
 #import "ViewController.h"
 #import "MenuScene.h"
 
+@import AVFoundation;
+
+@interface ViewController ()
+
+@property (nonatomic) AVAudioPlayer *backgroundMusicPlayer;
+
+@end
+
 @implementation ViewController
 
 - (void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
+    
+    // play background music
+    NSError *error;
+    NSURL * backgroundMusicURL = [[NSBundle mainBundle] URLForResource:@"bg" withExtension:@"mp3"];
+    self.backgroundMusicPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:backgroundMusicURL error:&error];
+    self.backgroundMusicPlayer.numberOfLoops = -1;
+    [self.backgroundMusicPlayer prepareToPlay];
+    [self.backgroundMusicPlayer play];
 
     // Configure the view.
     SKView * skView = (SKView *)self.view;

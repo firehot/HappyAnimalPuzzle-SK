@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A03E32F1803F8F900F285E6 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A03E32E1803F8F900F285E6 /* Default-Landscape~ipad.png */; };
 		8A344CAF17F93AF400B915BA /* Animal_0_0.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8A344C9917F93AF400B915BA /* Animal_0_0.atlas */; };
 		8A344CB017F93AF400B915BA /* Animal_0_1.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8A344C9A17F93AF400B915BA /* Animal_0_1.atlas */; };
 		8A344CB117F93AF400B915BA /* Animal_0_2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8A344C9B17F93AF400B915BA /* Animal_0_2.atlas */; };
@@ -106,6 +107,8 @@
 		8ADF5E9117F5730B00BB6731 /* ocean_book_open@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ADF5E5F17F5730B00BB6731 /* ocean_book_open@2x.png */; };
 		8ADF5E9317F5768600BB6731 /* main_menu_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ADF5E9217F5768600BB6731 /* main_menu_bg@2x.png */; };
 		8ADF5E9617F57A6800BB6731 /* SKHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADF5E9517F57A6700BB6731 /* SKHelper.m */; };
+		8AFB50521803EE440033585C /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AFB50511803EE440033585C /* Utility.m */; };
+		8AFB50551803F39D0033585C /* LoadingScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AFB50541803F39D0033585C /* LoadingScene.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +122,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8A03E32E1803F8F900F285E6 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		8A344C9917F93AF400B915BA /* Animal_0_0.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Animal_0_0.atlas; sourceTree = "<group>"; };
 		8A344C9A17F93AF400B915BA /* Animal_0_1.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Animal_0_1.atlas; sourceTree = "<group>"; };
 		8A344C9B17F93AF400B915BA /* Animal_0_2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Animal_0_2.atlas; sourceTree = "<group>"; };
@@ -229,6 +233,10 @@
 		8ADF5E9217F5768600BB6731 /* main_menu_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_menu_bg@2x.png"; sourceTree = "<group>"; };
 		8ADF5E9417F57A6700BB6731 /* SKHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKHelper.h; sourceTree = "<group>"; };
 		8ADF5E9517F57A6700BB6731 /* SKHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKHelper.m; sourceTree = "<group>"; };
+		8AFB50501803EE440033585C /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		8AFB50511803EE440033585C /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
+		8AFB50531803F39D0033585C /* LoadingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingScene.h; sourceTree = "<group>"; };
+		8AFB50541803F39D0033585C /* LoadingScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -330,12 +338,16 @@
 				8ADF5D8A17F56D7A00BB6731 /* Main.storyboard */,
 				8ADF5D8D17F56D7A00BB6731 /* ViewController.h */,
 				8ADF5D8E17F56D7A00BB6731 /* ViewController.m */,
+				8AFB50501803EE440033585C /* Utility.h */,
+				8AFB50511803EE440033585C /* Utility.m */,
 				8ADF5D9017F56D7A00BB6731 /* MenuScene.h */,
 				8ADF5D9117F56D7A00BB6731 /* MenuScene.m */,
 				8ADF5DB217F56EDB00BB6731 /* BookScene.h */,
 				8ADF5DB317F56EDB00BB6731 /* BookScene.m */,
 				8ADF5DB517F56EEB00BB6731 /* GameScene.h */,
 				8ADF5DB617F56EEB00BB6731 /* GameScene.m */,
+				8AFB50531803F39D0033585C /* LoadingScene.h */,
+				8AFB50541803F39D0033585C /* LoadingScene.m */,
 				8ADF5D9517F56D7A00BB6731 /* Images.xcassets */,
 				8A344C9817F93AF400B915BA /* Texture Atlas */,
 				8ADF5DB817F56FB700BB6731 /* Images */,
@@ -377,6 +389,7 @@
 		8ADF5DB817F56FB700BB6731 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8A03E32E1803F8F900F285E6 /* Default-Landscape~ipad.png */,
 				8ADF5E2E17F5730B00BB6731 /* animal_0_0.png */,
 				8ADF5E2F17F5730B00BB6731 /* animal_0_0@2x.png */,
 				8ADF5E3017F5730B00BB6731 /* animal_0_1.png */,
@@ -572,6 +585,7 @@
 				8ADF5E8217F5730B00BB6731 /* animal_2_5.png in Resources */,
 				8ADF5E7017F5730B00BB6731 /* animal_1_2.png in Resources */,
 				8ADF5E8017F5730B00BB6731 /* animal_2_4.png in Resources */,
+				8A03E32F1803F8F900F285E6 /* Default-Landscape~ipad.png in Resources */,
 				8ADF5E8817F5730B00BB6731 /* bg_pattern_3.png in Resources */,
 				8ADF5E7D17F5730B00BB6731 /* animal_2_2@2x.png in Resources */,
 				8A344CC317F93AF400B915BA /* BookMenu3.atlas in Resources */,
@@ -621,7 +635,9 @@
 			files = (
 				8A344CCA17F9421900B915BA /* SKSpriteButtonNode.m in Sources */,
 				8ADF5D9217F56D7A00BB6731 /* MenuScene.m in Sources */,
+				8AFB50521803EE440033585C /* Utility.m in Sources */,
 				8ADF5E9617F57A6800BB6731 /* SKHelper.m in Sources */,
+				8AFB50551803F39D0033585C /* LoadingScene.m in Sources */,
 				8A344CC717F93F9E00B915BA /* SKScene+Helper.m in Sources */,
 				8ADF5D8F17F56D7A00BB6731 /* ViewController.m in Sources */,
 				8ADF5D8917F56D7A00BB6731 /* AppDelegate.m in Sources */,

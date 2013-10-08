@@ -10,4 +10,14 @@
 
 @implementation BookScene
 
+- (void)createContent {
+    SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"farm_book_open.png"];
+    background.position = skp([self centerX], [self centerY]);
+    [self addChild:background];
+}
+
+- (void)didMoveToView:(SKView *)view {
+    [self createContent];
+}
+
 @end

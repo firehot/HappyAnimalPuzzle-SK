@@ -7,6 +7,9 @@
 //
 
 #import "MenuScene.h"
+#import "BookScene.h"
+#import "GameScene.h"
+#import "LoadingScene.h"
 
 @implementation MenuScene
 
@@ -17,7 +20,107 @@
     
     [self createLogo];
     
+    SKSpriteButtonNode *farmBtn = [SKSpriteButtonNode buttonNodeWithNormalTexture:[SKTexture textureWithImageNamed:@"farm_book.png"]
+                                                                  selectedTexture:nil
+                                                                            block:^(id sender) {
+                                                                                if ([Utility sharedUtility].isSoundAvaliable) {
+                                                                                    [self runAction:[SKAction playSoundFileNamed:kSoundEffectClick
+                                                                                                               waitForCompletion:NO]];
+                                                                                }
+                                                                                
+                                                                                SKTransition *transition = [SKTransition moveInWithDirection:SKTransitionDirectionUp duration:0.8f];
+                                                                                
+                                                                                LoadingScene *loadingScene = [LoadingScene sceneWithSize:self.size];
+                                                                                [loadingScene setLoadingImage:[UIImage imageNamed:@"Default-Landscape~ipad"]];
+                                                                                [loadingScene setLoadingBlock:^{
+                                                                                    // load textures
+                                                                                    
+                                                                                }];
+                                                                                [loadingScene setNextScene:[BookScene sceneWithSize:self.size]];
+                                                                                
+                                                                                [self.view presentScene:loadingScene transition:transition];
+                                                                            }];
+    farmBtn.position = skp(230, 400);
+    [self addChild:farmBtn];
     
+    SKSpriteButtonNode *oceanBtn = [SKSpriteButtonNode buttonNodeWithNormalTexture:[SKTexture textureWithImageNamed:@"ocean_book.png"]
+                                                                  selectedTexture:nil
+                                                                            block:^(id sender) {
+                                                                                if ([Utility sharedUtility].isSoundAvaliable) {
+                                                                                    [self runAction:[SKAction playSoundFileNamed:kSoundEffectClick
+                                                                                                               waitForCompletion:NO]];
+                                                                                }
+                                                                                
+                                                                                SKTransition *transition = [SKTransition moveInWithDirection:SKTransitionDirectionUp duration:0.8f];
+                                                                                
+                                                                                LoadingScene *loadingScene = [LoadingScene sceneWithSize:self.size];
+                                                                                [loadingScene setLoadingImage:[UIImage imageNamed:@"Default-Landscape~ipad"]];
+                                                                                [loadingScene setLoadingBlock:^{
+                                                                                    // load textures
+                                                                                    
+                                                                                }];
+                                                                                [loadingScene setNextScene:[BookScene sceneWithSize:self.size]];
+                                                                                
+                                                                                [self.view presentScene:loadingScene transition:transition];
+                                                                            }];
+    oceanBtn.position = skp(790, 400);
+    [self addChild:oceanBtn];
+    
+    SKSpriteButtonNode *grassBtn = [SKSpriteButtonNode buttonNodeWithNormalTexture:[SKTexture textureWithImageNamed:@"grass_book.png"]
+                                                                  selectedTexture:nil
+                                                                            block:^(id sender) {
+                                                                                if ([Utility sharedUtility].isSoundAvaliable) {
+                                                                                    [self runAction:[SKAction playSoundFileNamed:kSoundEffectClick
+                                                                                                               waitForCompletion:NO]];
+                                                                                }
+                                                                                
+                                                                                SKTransition *transition = [SKTransition moveInWithDirection:SKTransitionDirectionUp duration:0.8f];
+                                                                                
+                                                                                LoadingScene *loadingScene = [LoadingScene sceneWithSize:self.size];
+                                                                                [loadingScene setLoadingImage:[UIImage imageNamed:@"Default-Landscape~ipad"]];
+                                                                                [loadingScene setLoadingBlock:^{
+                                                                                    // load textures
+                                                                                    
+                                                                                }];
+                                                                                [loadingScene setNextScene:[BookScene sceneWithSize:self.size]];
+                                                                                
+                                                                                [self.view presentScene:loadingScene transition:transition];
+                                                                            }];
+    grassBtn.position = skp(510, 400);
+    [self addChild:grassBtn];
+    
+    SKSpriteButtonNode *soundBtn = [SKSpriteButtonNode buttonNodeWithNormalTexture:[SKTexture textureWithImageNamed:@"sound.png"]
+                                                                   selectedTexture:nil
+                                                                             block:^(id sender) {
+                                                                                 
+                                                                             }];
+    soundBtn.position = skp(150, 110);
+    [self addChild:soundBtn];
+    
+    SKSpriteButtonNode *parentBtn = [SKSpriteButtonNode buttonNodeWithNormalTexture:[SKTexture textureWithImageNamed:@"parent.png"]
+                                                                   selectedTexture:nil
+                                                                             block:^(id sender) {
+                                                                                 
+                                                                             }];
+    parentBtn.position = skp(self.winSize.width - 150, 110);
+    [self addChild:parentBtn];
+    
+    SKSpriteButtonNode *rateBtn = [SKSpriteButtonNode buttonNodeWithNormalTexture:[SKTexture textureWithImageNamed:@"review.png"]
+                                                                    selectedTexture:nil
+                                                                              block:^(id sender) {
+                                                                                  [self runAction:[SKAction playSoundFileNamed:kSoundEffectClick
+                                                                                                             waitForCompletion:NO]];
+                                                                                  
+//                                                                                  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Love HappyAnimalPuzzle?"
+//                                                                                                                                  message:@"Give us ★★★★★ "
+//                                                                                                                                 delegate:self
+//                                                                                                                        cancelButtonTitle:@"No, Thanks"
+//                                                                                                                        otherButtonTitles:@"Rate Now", nil];
+//                                                                                  [alert show];
+//                                                                                  alert.tag = kRateAlertTag;
+                                                                              }];
+    rateBtn.position = skp(self.winSize.width*0.5, 110);
+    [self addChild:rateBtn];
 }
 
 - (void)loadResource {
