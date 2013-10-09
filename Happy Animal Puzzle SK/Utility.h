@@ -37,8 +37,7 @@ typedef enum {
 
 + (Utility *)sharedUtility;
 + (NSArray *)blockPositionForLevelType:(LevelType)level;
-//+ (CCAction *)buttonAnimation;
-//+ (BOOL)isAppUpgrade;
++ (BOOL)isAppUpgrade;
 
 @property (nonatomic, assign) BOOL isSoundAvaliable;
 

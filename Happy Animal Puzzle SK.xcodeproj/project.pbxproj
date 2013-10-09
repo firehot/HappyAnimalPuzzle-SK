@@ -32,6 +32,9 @@
 		8A344CC417F93AF400B915BA /* Others.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8A344CAE17F93AF400B915BA /* Others.atlas */; };
 		8A344CC717F93F9E00B915BA /* SKScene+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A344CC617F93F9E00B915BA /* SKScene+Helper.m */; };
 		8A344CCA17F9421900B915BA /* SKSpriteButtonNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A344CC917F9421900B915BA /* SKSpriteButtonNode.m */; };
+		8A5046A1180541FF008CD0F6 /* PuzzleBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5046A0180541FF008CD0F6 /* PuzzleBlock.m */; };
+		8A5046A618054209008CD0F6 /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5046A318054209008CD0F6 /* IAPHelper.m */; };
+		8A5046A718054209008CD0F6 /* MyIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5046A518054209008CD0F6 /* MyIAPHelper.m */; };
 		8ADF5D7717F56D7A00BB6731 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ADF5D7617F56D7A00BB6731 /* Foundation.framework */; };
 		8ADF5D7917F56D7A00BB6731 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ADF5D7817F56D7A00BB6731 /* CoreGraphics.framework */; };
 		8ADF5D7B17F56D7A00BB6731 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ADF5D7A17F56D7A00BB6731 /* UIKit.framework */; };
@@ -149,6 +152,12 @@
 		8A344CC617F93F9E00B915BA /* SKScene+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKScene+Helper.m"; sourceTree = "<group>"; };
 		8A344CC817F9421900B915BA /* SKSpriteButtonNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKSpriteButtonNode.h; sourceTree = "<group>"; };
 		8A344CC917F9421900B915BA /* SKSpriteButtonNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKSpriteButtonNode.m; sourceTree = "<group>"; };
+		8A50469F180541FF008CD0F6 /* PuzzleBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PuzzleBlock.h; sourceTree = "<group>"; };
+		8A5046A0180541FF008CD0F6 /* PuzzleBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PuzzleBlock.m; sourceTree = "<group>"; };
+		8A5046A218054209008CD0F6 /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelper.h; sourceTree = "<group>"; };
+		8A5046A318054209008CD0F6 /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPHelper.m; sourceTree = "<group>"; };
+		8A5046A418054209008CD0F6 /* MyIAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyIAPHelper.h; sourceTree = "<group>"; };
+		8A5046A518054209008CD0F6 /* MyIAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyIAPHelper.m; sourceTree = "<group>"; };
 		8ADF5D7317F56D7A00BB6731 /* Happy Animal Puzzle SK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Happy Animal Puzzle SK.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ADF5D7617F56D7A00BB6731 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8ADF5D7817F56D7A00BB6731 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -348,6 +357,12 @@
 				8ADF5DB617F56EEB00BB6731 /* GameScene.m */,
 				8AFB50531803F39D0033585C /* LoadingScene.h */,
 				8AFB50541803F39D0033585C /* LoadingScene.m */,
+				8A50469F180541FF008CD0F6 /* PuzzleBlock.h */,
+				8A5046A0180541FF008CD0F6 /* PuzzleBlock.m */,
+				8A5046A218054209008CD0F6 /* IAPHelper.h */,
+				8A5046A318054209008CD0F6 /* IAPHelper.m */,
+				8A5046A418054209008CD0F6 /* MyIAPHelper.h */,
+				8A5046A518054209008CD0F6 /* MyIAPHelper.m */,
 				8ADF5D9517F56D7A00BB6731 /* Images.xcassets */,
 				8A344C9817F93AF400B915BA /* Texture Atlas */,
 				8ADF5DB817F56FB700BB6731 /* Images */,
@@ -633,7 +648,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A5046A718054209008CD0F6 /* MyIAPHelper.m in Sources */,
 				8A344CCA17F9421900B915BA /* SKSpriteButtonNode.m in Sources */,
+				8A5046A618054209008CD0F6 /* IAPHelper.m in Sources */,
 				8ADF5D9217F56D7A00BB6731 /* MenuScene.m in Sources */,
 				8AFB50521803EE440033585C /* Utility.m in Sources */,
 				8ADF5E9617F57A6800BB6731 /* SKHelper.m in Sources */,
@@ -642,6 +659,7 @@
 				8ADF5D8F17F56D7A00BB6731 /* ViewController.m in Sources */,
 				8ADF5D8917F56D7A00BB6731 /* AppDelegate.m in Sources */,
 				8ADF5DB417F56EDB00BB6731 /* BookScene.m in Sources */,
+				8A5046A1180541FF008CD0F6 /* PuzzleBlock.m in Sources */,
 				8ADF5DB717F56EEB00BB6731 /* GameScene.m in Sources */,
 				8ADF5D8517F56D7A00BB6731 /* main.m in Sources */,
 			);

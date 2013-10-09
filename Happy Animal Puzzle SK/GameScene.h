@@ -10,4 +10,11 @@
 
 @interface GameScene : SKScene
 
++ (instancetype)sceneWithSize:(CGSize)size
+                    levelData:(AnimalCategory)category
+                  animalIndex:(int)index;
+
+@property (nonatomic, strong) NSArray *puzzleBlocks;
+@property (nonatomic) int finishBlockNumber;
+
 @end

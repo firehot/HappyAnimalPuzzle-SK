@@ -9,7 +9,6 @@
 #import "MenuScene.h"
 #import "BookScene.h"
 #import "GameScene.h"
-#import "LoadingScene.h"
 
 @implementation MenuScene
 
@@ -28,17 +27,9 @@
                                                                                                                waitForCompletion:NO]];
                                                                                 }
                                                                                 
-                                                                                SKTransition *transition = [SKTransition moveInWithDirection:SKTransitionDirectionUp duration:0.8f];
-                                                                                
-                                                                                LoadingScene *loadingScene = [LoadingScene sceneWithSize:self.size];
-                                                                                [loadingScene setLoadingImage:[UIImage imageNamed:@"Default-Landscape~ipad"]];
-                                                                                [loadingScene setLoadingBlock:^{
-                                                                                    // load textures
-                                                                                    
-                                                                                }];
-                                                                                [loadingScene setNextScene:[BookScene sceneWithSize:self.size]];
-                                                                                
-                                                                                [self.view presentScene:loadingScene transition:transition];
+                                                                                SKTransition *transition = [SKTransition fadeWithDuration:0.8f];
+                                                                                [self.view presentScene:[BookScene sceneWithSize:self.size]
+                                                                                             transition:transition];
                                                                             }];
     farmBtn.position = skp(230, 400);
     [self addChild:farmBtn];
@@ -51,17 +42,9 @@
                                                                                                                waitForCompletion:NO]];
                                                                                 }
                                                                                 
-                                                                                SKTransition *transition = [SKTransition moveInWithDirection:SKTransitionDirectionUp duration:0.8f];
-                                                                                
-                                                                                LoadingScene *loadingScene = [LoadingScene sceneWithSize:self.size];
-                                                                                [loadingScene setLoadingImage:[UIImage imageNamed:@"Default-Landscape~ipad"]];
-                                                                                [loadingScene setLoadingBlock:^{
-                                                                                    // load textures
-                                                                                    
-                                                                                }];
-                                                                                [loadingScene setNextScene:[BookScene sceneWithSize:self.size]];
-                                                                                
-                                                                                [self.view presentScene:loadingScene transition:transition];
+                                                                                SKTransition *transition = [SKTransition fadeWithDuration:0.8f];
+                                                                                [self.view presentScene:[BookScene sceneWithSize:self.size]
+                                                                                             transition:transition];
                                                                             }];
     oceanBtn.position = skp(790, 400);
     [self addChild:oceanBtn];
@@ -74,17 +57,9 @@
                                                                                                                waitForCompletion:NO]];
                                                                                 }
                                                                                 
-                                                                                SKTransition *transition = [SKTransition moveInWithDirection:SKTransitionDirectionUp duration:0.8f];
-                                                                                
-                                                                                LoadingScene *loadingScene = [LoadingScene sceneWithSize:self.size];
-                                                                                [loadingScene setLoadingImage:[UIImage imageNamed:@"Default-Landscape~ipad"]];
-                                                                                [loadingScene setLoadingBlock:^{
-                                                                                    // load textures
-                                                                                    
-                                                                                }];
-                                                                                [loadingScene setNextScene:[BookScene sceneWithSize:self.size]];
-                                                                                
-                                                                                [self.view presentScene:loadingScene transition:transition];
+                                                                                SKTransition *transition = [SKTransition fadeWithDuration:0.8f];
+                                                                                [self.view presentScene:[BookScene sceneWithSize:self.size]
+                                                                                             transition:transition];
                                                                             }];
     grassBtn.position = skp(510, 400);
     [self addChild:grassBtn];

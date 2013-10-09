@@ -7,7 +7,7 @@
 //
 
 #import "Utility.h"
-//#import "MyIAPHelper.h"
+#import "MyIAPHelper.h"
 
 @implementation Utility
 
@@ -64,17 +64,8 @@
     return nil;
 }
 
-//+ (CCAction *)buttonAnimation {
-//    id a1 = [CCScaleTo actionWithDuration:0.2f scale:1.3f];
-//    id a2 = [CCScaleTo actionWithDuration:0.2f scale:0.8f];
-//    id a3 = [CCScaleTo actionWithDuration:0.2f scale:1.1f];
-//    id a4 = [CCScaleTo actionWithDuration:0.2f scale:1.0f];
-//    
-//    return [CCSequence actions:a1, a2, a3, a4, nil];
-//}
-
-//+ (BOOL)isAppUpgrade {
-//    return [[NSUserDefaults standardUserDefaults] boolForKey:kUpgradeIAPIdentifier];
-//}
++ (BOOL)isAppUpgrade {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:kUpgradeIAPIdentifier];
+}
 
 @end
