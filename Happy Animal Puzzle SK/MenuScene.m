@@ -9,6 +9,19 @@
 #import "MenuScene.h"
 #import "BookScene.h"
 #import "GameScene.h"
+#import "AppDelegate.h"
+#import "MyIAPHelper.h"
+
+#define kRateAlertTag 1
+#define kParentAlertTag 2
+
+#define kLogoTag 100
+
+@interface MenuScene ()
+
+@property (nonatomic) BOOL contentCreated;
+
+@end
 
 @implementation MenuScene
 
@@ -28,7 +41,7 @@
                                                                                 }
                                                                                 
                                                                                 SKTransition *transition = [SKTransition fadeWithDuration:0.8f];
-                                                                                [self.view presentScene:[BookScene sceneWithSize:self.size]
+                                                                                [self.view presentScene:[BookScene sceneWithSize:self.size animalCategory:kAnimalCategoryFarm]
                                                                                              transition:transition];
                                                                             }];
     farmBtn.position = skp(230, 400);
@@ -43,7 +56,7 @@
                                                                                 }
                                                                                 
                                                                                 SKTransition *transition = [SKTransition fadeWithDuration:0.8f];
-                                                                                [self.view presentScene:[BookScene sceneWithSize:self.size]
+                                                                                [self.view presentScene:[BookScene sceneWithSize:self.size animalCategory:kAnimalCategoryOcean]
                                                                                              transition:transition];
                                                                             }];
     oceanBtn.position = skp(790, 400);
@@ -58,7 +71,7 @@
                                                                                 }
                                                                                 
                                                                                 SKTransition *transition = [SKTransition fadeWithDuration:0.8f];
-                                                                                [self.view presentScene:[BookScene sceneWithSize:self.size]
+                                                                                [self.view presentScene:[BookScene sceneWithSize:self.size animalCategory:kAnimalCategoryGrass]
                                                                                              transition:transition];
                                                                             }];
     grassBtn.position = skp(510, 400);
@@ -67,6 +80,11 @@
     SKSpriteButtonNode *soundBtn = [SKSpriteButtonNode buttonNodeWithNormalTexture:[SKTexture textureWithImageNamed:@"sound.png"]
                                                                    selectedTexture:nil
                                                                              block:^(id sender) {
+                                                                                 if ([Utility sharedUtility].isSoundAvaliable) {
+                                                                                     [self runAction:[SKAction playSoundFileNamed:kSoundEffectClick
+                                                                                                                waitForCompletion:NO]];
+                                                                                 }
+                                                                                 
                                                                                  
                                                                              }];
     soundBtn.position = skp(150, 110);
@@ -75,7 +93,18 @@
     SKSpriteButtonNode *parentBtn = [SKSpriteButtonNode buttonNodeWithNormalTexture:[SKTexture textureWithImageNamed:@"parent.png"]
                                                                    selectedTexture:nil
                                                                              block:^(id sender) {
+                                                                                 if ([Utility sharedUtility].isSoundAvaliable) {
+                                                                                     [self runAction:[SKAction playSoundFileNamed:kSoundEffectClick
+                                                                                                                waitForCompletion:NO]];
+                                                                                 }
                                                                                  
+                                                                                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Upgrade to full version"
+                                                                                                                                 message:@"Upgrade to full version to play all puzzles and remove ad banner forever!"
+                                                                                                                                delegate:self
+                                                                                                                       cancelButtonTitle:@"No, Thanks"
+                                                                                                                       otherButtonTitles:@"OK", @"I've already bought!", nil];
+                                                                                 [alert show];
+                                                                                 alert.tag = kParentAlertTag;
                                                                              }];
     parentBtn.position = skp(self.winSize.width - 150, 110);
     [self addChild:parentBtn];
@@ -83,16 +112,19 @@
     SKSpriteButtonNode *rateBtn = [SKSpriteButtonNode buttonNodeWithNormalTexture:[SKTexture textureWithImageNamed:@"review.png"]
                                                                     selectedTexture:nil
                                                                               block:^(id sender) {
-                                                                                  [self runAction:[SKAction playSoundFileNamed:kSoundEffectClick
-                                                                                                             waitForCompletion:NO]];
+                                                                                  if ([Utility sharedUtility].isSoundAvaliable) {
+                                                                                      [self runAction:[SKAction playSoundFileNamed:kSoundEffectClick
+                                                                                                                 waitForCompletion:NO]];
+                                                                                  }
                                                                                   
-//                                                                                  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Love HappyAnimalPuzzle?"
-//                                                                                                                                  message:@"Give us ★★★★★ "
-//                                                                                                                                 delegate:self
-//                                                                                                                        cancelButtonTitle:@"No, Thanks"
-//                                                                                                                        otherButtonTitles:@"Rate Now", nil];
-//                                                                                  [alert show];
-//                                                                                  alert.tag = kRateAlertTag;
+                                                                                  
+                                                                                  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Love HappyAnimalPuzzle?"
+                                                                                                                                  message:@"Give us ★★★★★ "
+                                                                                                                                 delegate:self
+                                                                                                                        cancelButtonTitle:@"No, Thanks"
+                                                                                                                        otherButtonTitles:@"Rate Now", nil];
+                                                                                  [alert show];
+                                                                                  alert.tag = kRateAlertTag;
                                                                               }];
     rateBtn.position = skp(self.winSize.width*0.5, 110);
     [self addChild:rateBtn];
@@ -100,37 +132,10 @@
 
 - (void)loadResource {
     SKTextureAtlas *OtherAtlas = [SKTextureAtlas atlasNamed:@"Others.atlas"];
-//    SKTextureAtlas *BookMenu1Atlas = [SKTextureAtlas atlasNamed:@"BookMenu1.atlas"];
-//    SKTextureAtlas *BookMenu2Atlas = [SKTextureAtlas atlasNamed:@"BookMenu2.atlas"];
-//    SKTextureAtlas *BookMenu3Atlas = [SKTextureAtlas atlasNamed:@"BookMenu3.atlas"];
-//    
-//    SKTextureAtlas *Animal_0_0Atlas = [SKTextureAtlas atlasNamed:@"Animal_0_0.atlas"];
-//    SKTextureAtlas *Animal_0_1Atlas = [SKTextureAtlas atlasNamed:@"Animal_0_1.atlas"];
-//    SKTextureAtlas *Animal_0_2Atlas = [SKTextureAtlas atlasNamed:@"Animal_0_2.atlas"];
-//    SKTextureAtlas *Animal_0_3Atlas = [SKTextureAtlas atlasNamed:@"Animal_0_3.atlas"];
-//    SKTextureAtlas *Animal_0_4Atlas = [SKTextureAtlas atlasNamed:@"Animal_0_4.atlas"];
-//    SKTextureAtlas *Animal_0_5Atlas = [SKTextureAtlas atlasNamed:@"Animal_0_5.atlas"];
-//    SKTextureAtlas *Animal_1_0Atlas = [SKTextureAtlas atlasNamed:@"Animal_0_0.atlas"];
-//    
-//    SKTextureAtlas *Animal_1_1Atlas = [SKTextureAtlas atlasNamed:@"Animal_0_1.atlas"];
-//    SKTextureAtlas *Animal_1_2Atlas = [SKTextureAtlas atlasNamed:@"Animal_0_2.atlas"];
-//    SKTextureAtlas *Animal_1_3Atlas = [SKTextureAtlas atlasNamed:@"Animal_0_3.atlas"];
-//    SKTextureAtlas *Animal_1_4Atlas = [SKTextureAtlas atlasNamed:@"Animal_0_4.atlas"];
-//    SKTextureAtlas *Animal_1_5Atlas = [SKTextureAtlas atlasNamed:@"Animal_0_5.atlas"];
-//    
-//    SKTextureAtlas *Animal_2_0Atlas = [SKTextureAtlas atlasNamed:@"Animal_2_0.atlas"];
-//    SKTextureAtlas *Animal_2_1Atlas = [SKTextureAtlas atlasNamed:@"Animal_2_1.atlas"];
-//    SKTextureAtlas *Animal_2_2Atlas = [SKTextureAtlas atlasNamed:@"Animal_2_2.atlas"];
-//    SKTextureAtlas *Animal_2_3Atlas = [SKTextureAtlas atlasNamed:@"Animal_2_3.atlas"];
-//    SKTextureAtlas *Animal_2_4Atlas = [SKTextureAtlas atlasNamed:@"Animal_2_4.atlas"];
-//    SKTextureAtlas *Animal_2_5Atlas = [SKTextureAtlas atlasNamed:@"Animal_2_5.atlas"];
-    
-    NSDate *now = [NSDate date];
     
     [SKTextureAtlas preloadTextureAtlases:@[OtherAtlas]
                     withCompletionHandler:^{
-                        NSTimeInterval interval = [[NSDate date] timeIntervalSinceDate:now];
-                        NSLog(@"load texture time : %f", interval);
+                        
                     }];
 }
 
@@ -143,7 +148,10 @@
 }
 
 - (void)didMoveToView:(SKView *)view {
-    [self createContent];
+    if (!self.contentCreated) {
+        self.contentCreated = YES;
+        [self createContent];
+    }
 }
 
 - (void)createLogo {
@@ -168,15 +176,52 @@
     eye4.position = skp(342, 127);
     [logo addChild:eye4];
     
-//    [NSTimer scheduledTimerWithTimeInterval:5.0f
-//                                     target:self
-//                                   selector:@selector(playEyeAnimate)
-//                                   userInfo:nil
-//                                    repeats:YES];
+    [self runAction:[SKAction repeatActionForever:[SKAction sequence:@[[SKAction waitForDuration:4 withRange:2.5],
+                                                                       [SKAction performSelector:@selector(playEyeAnimate) onTarget:self]]]]];
 }
 
 - (void)playEyeAnimate {
+    SKSpriteNode *logo = (SKSpriteNode *)[self childNodeWithName:@"logo"];
+    for (SKSpriteNode *eye in logo.children) {
+        NSMutableArray *textures = [NSMutableArray array];
+        for (int i = 0; i != 2; i++) {
+            NSString *textureName = [NSString stringWithFormat:@"eye_%d.png", i];
+            SKTexture *texture = [SKTexture textureWithImageNamed:textureName];
+            [textures addObject:texture];
+        }
+        [eye runAction:[SKAction repeatAction:[SKAction animateWithTextures:textures timePerFrame:0.15f]
+                                        count:2]];
+    }
+}
+
+- (void)dealloc {
     
+}
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (alertView.tag == kRateAlertTag) {
+        if (buttonIndex != alertView.cancelButtonIndex) {
+            NSString *url = [NSString stringWithFormat:@"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@", @"663789982"];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+        }
+    }
+    else if (alertView.tag == kParentAlertTag) {
+        if (buttonIndex != alertView.cancelButtonIndex) {
+            if (buttonIndex == alertView.firstOtherButtonIndex) {
+                [[MyIAPHelper sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
+                    if (products.count == 1) {
+                        SKProduct *product = [products objectAtIndex:0];
+                        [[MyIAPHelper sharedInstance] buyProduct:product];
+                    }
+                }];
+            }
+            else {
+                [[MyIAPHelper sharedInstance] restoreCompletedTransactions];
+            }
+        }
+    }
 }
 
 @end

@@ -11,15 +11,6 @@
 
 @implementation PuzzleBlock
 
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        self.userInteractionEnabled = YES;
-    }
-    return self;
-}
-
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     if (touches.count > 1) {
         return;

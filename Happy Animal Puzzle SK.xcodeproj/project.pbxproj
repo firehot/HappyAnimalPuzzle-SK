@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		8A03E32F1803F8F900F285E6 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A03E32E1803F8F900F285E6 /* Default-Landscape~ipad.png */; };
+		8A10495F18067E59000511BE /* BookMenu0.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8A10495C18067E58000511BE /* BookMenu0.atlas */; };
+		8A10496018067E59000511BE /* BookMenu1.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8A10495D18067E59000511BE /* BookMenu1.atlas */; };
+		8A10496118067E59000511BE /* BookMenu2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8A10495E18067E59000511BE /* BookMenu2.atlas */; };
 		8A344CAF17F93AF400B915BA /* Animal_0_0.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8A344C9917F93AF400B915BA /* Animal_0_0.atlas */; };
 		8A344CB017F93AF400B915BA /* Animal_0_1.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8A344C9A17F93AF400B915BA /* Animal_0_1.atlas */; };
 		8A344CB117F93AF400B915BA /* Animal_0_2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8A344C9B17F93AF400B915BA /* Animal_0_2.atlas */; };
@@ -26,9 +29,6 @@
 		8A344CBE17F93AF400B915BA /* Animal_2_3.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8A344CA817F93AF400B915BA /* Animal_2_3.atlas */; };
 		8A344CBF17F93AF400B915BA /* Animal_2_4.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8A344CA917F93AF400B915BA /* Animal_2_4.atlas */; };
 		8A344CC017F93AF400B915BA /* Animal_2_5.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8A344CAA17F93AF400B915BA /* Animal_2_5.atlas */; };
-		8A344CC117F93AF400B915BA /* BookMenu1.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8A344CAB17F93AF400B915BA /* BookMenu1.atlas */; };
-		8A344CC217F93AF400B915BA /* BookMenu2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8A344CAC17F93AF400B915BA /* BookMenu2.atlas */; };
-		8A344CC317F93AF400B915BA /* BookMenu3.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8A344CAD17F93AF400B915BA /* BookMenu3.atlas */; };
 		8A344CC417F93AF400B915BA /* Others.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8A344CAE17F93AF400B915BA /* Others.atlas */; };
 		8A344CC717F93F9E00B915BA /* SKScene+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A344CC617F93F9E00B915BA /* SKScene+Helper.m */; };
 		8A344CCA17F9421900B915BA /* SKSpriteButtonNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A344CC917F9421900B915BA /* SKSpriteButtonNode.m */; };
@@ -126,6 +126,9 @@
 
 /* Begin PBXFileReference section */
 		8A03E32E1803F8F900F285E6 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		8A10495C18067E58000511BE /* BookMenu0.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BookMenu0.atlas; sourceTree = "<group>"; };
+		8A10495D18067E59000511BE /* BookMenu1.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BookMenu1.atlas; sourceTree = "<group>"; };
+		8A10495E18067E59000511BE /* BookMenu2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BookMenu2.atlas; sourceTree = "<group>"; };
 		8A344C9917F93AF400B915BA /* Animal_0_0.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Animal_0_0.atlas; sourceTree = "<group>"; };
 		8A344C9A17F93AF400B915BA /* Animal_0_1.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Animal_0_1.atlas; sourceTree = "<group>"; };
 		8A344C9B17F93AF400B915BA /* Animal_0_2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Animal_0_2.atlas; sourceTree = "<group>"; };
@@ -144,9 +147,6 @@
 		8A344CA817F93AF400B915BA /* Animal_2_3.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Animal_2_3.atlas; sourceTree = "<group>"; };
 		8A344CA917F93AF400B915BA /* Animal_2_4.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Animal_2_4.atlas; sourceTree = "<group>"; };
 		8A344CAA17F93AF400B915BA /* Animal_2_5.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Animal_2_5.atlas; sourceTree = "<group>"; };
-		8A344CAB17F93AF400B915BA /* BookMenu1.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BookMenu1.atlas; sourceTree = "<group>"; };
-		8A344CAC17F93AF400B915BA /* BookMenu2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BookMenu2.atlas; sourceTree = "<group>"; };
-		8A344CAD17F93AF400B915BA /* BookMenu3.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BookMenu3.atlas; sourceTree = "<group>"; };
 		8A344CAE17F93AF400B915BA /* Others.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Others.atlas; sourceTree = "<group>"; };
 		8A344CC517F93F9E00B915BA /* SKScene+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKScene+Helper.h"; sourceTree = "<group>"; };
 		8A344CC617F93F9E00B915BA /* SKScene+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKScene+Helper.m"; sourceTree = "<group>"; };
@@ -276,6 +276,9 @@
 		8A344C9817F93AF400B915BA /* Texture Atlas */ = {
 			isa = PBXGroup;
 			children = (
+				8A10495C18067E58000511BE /* BookMenu0.atlas */,
+				8A10495D18067E59000511BE /* BookMenu1.atlas */,
+				8A10495E18067E59000511BE /* BookMenu2.atlas */,
 				8A344C9917F93AF400B915BA /* Animal_0_0.atlas */,
 				8A344C9A17F93AF400B915BA /* Animal_0_1.atlas */,
 				8A344C9B17F93AF400B915BA /* Animal_0_2.atlas */,
@@ -294,9 +297,6 @@
 				8A344CA817F93AF400B915BA /* Animal_2_3.atlas */,
 				8A344CA917F93AF400B915BA /* Animal_2_4.atlas */,
 				8A344CAA17F93AF400B915BA /* Animal_2_5.atlas */,
-				8A344CAB17F93AF400B915BA /* BookMenu1.atlas */,
-				8A344CAC17F93AF400B915BA /* BookMenu2.atlas */,
-				8A344CAD17F93AF400B915BA /* BookMenu3.atlas */,
 				8A344CAE17F93AF400B915BA /* Others.atlas */,
 			);
 			path = "Texture Atlas";
@@ -580,13 +580,13 @@
 				8ADF5D9617F56D7A00BB6731 /* Images.xcassets in Resources */,
 				8A344CBB17F93AF400B915BA /* Animal_2_0.atlas in Resources */,
 				8ADF5E7217F5730B00BB6731 /* animal_1_3.png in Resources */,
+				8A10496118067E59000511BE /* BookMenu2.atlas in Resources */,
 				8ADF5E7117F5730B00BB6731 /* animal_1_2@2x.png in Resources */,
 				8ADF5E8E17F5730B00BB6731 /* main_menu_bg.png in Resources */,
 				8A344CC417F93AF400B915BA /* Others.atlas in Resources */,
 				8ADF5E2917F56FB800BB6731 /* finish.wav in Resources */,
 				8A344CB417F93AF400B915BA /* Animal_0_5.atlas in Resources */,
 				8ADF5E8B17F5730B00BB6731 /* farm_book_open@2x.png in Resources */,
-				8A344CC217F93AF400B915BA /* BookMenu2.atlas in Resources */,
 				8ADF5E9017F5730B00BB6731 /* ocean_book_open.png in Resources */,
 				8A344CB017F93AF400B915BA /* Animal_0_1.atlas in Resources */,
 				8ADF5D8C17F56D7A00BB6731 /* Main.storyboard in Resources */,
@@ -603,11 +603,9 @@
 				8A03E32F1803F8F900F285E6 /* Default-Landscape~ipad.png in Resources */,
 				8ADF5E8817F5730B00BB6731 /* bg_pattern_3.png in Resources */,
 				8ADF5E7D17F5730B00BB6731 /* animal_2_2@2x.png in Resources */,
-				8A344CC317F93AF400B915BA /* BookMenu3.atlas in Resources */,
 				8A344CBD17F93AF400B915BA /* Animal_2_2.atlas in Resources */,
 				8A344CB617F93AF400B915BA /* Animal_1_1.atlas in Resources */,
 				8ADF5E8717F5730B00BB6731 /* bg_pattern_2@2x.png in Resources */,
-				8A344CC117F93AF400B915BA /* BookMenu1.atlas in Resources */,
 				8A344CAF17F93AF400B915BA /* Animal_0_0.atlas in Resources */,
 				8ADF5E7517F5730B00BB6731 /* animal_1_4@2x.png in Resources */,
 				8ADF5E2617F56FB800BB6731 /* bg.mp3 in Resources */,
@@ -617,9 +615,11 @@
 				8A344CB517F93AF400B915BA /* Animal_1_0.atlas in Resources */,
 				8ADF5E6A17F5730B00BB6731 /* animal_0_5.png in Resources */,
 				8A344CBA17F93AF400B915BA /* Animal_1_5.atlas in Resources */,
+				8A10495F18067E59000511BE /* BookMenu0.atlas in Resources */,
 				8ADF5E2817F56FB800BB6731 /* click.mp3 in Resources */,
 				8ADF5E6E17F5730B00BB6731 /* animal_1_1.png in Resources */,
 				8ADF5E7B17F5730B00BB6731 /* animal_2_1@2x.png in Resources */,
+				8A10496018067E59000511BE /* BookMenu1.atlas in Resources */,
 				8ADF5E2517F56FB800BB6731 /* ao.mp3 in Resources */,
 				8ADF5E8117F5730B00BB6731 /* animal_2_4@2x.png in Resources */,
 				8A344CB817F93AF400B915BA /* Animal_1_3.atlas in Resources */,

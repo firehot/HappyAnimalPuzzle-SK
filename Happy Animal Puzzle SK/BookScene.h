@@ -10,4 +10,7 @@
 
 @interface BookScene : SKScene
 
++ (instancetype)sceneWithSize:(CGSize)size
+               animalCategory:(AnimalCategory)category;
+
 @end

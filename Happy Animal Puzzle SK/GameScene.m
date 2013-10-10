@@ -17,13 +17,19 @@
 #define kFadeDuration 1.0f
 #define kParticleTag 100
 
+enum {
+    kBackgroundLayerZ = 0,
+    kPuzzleLayerZ = 100,
+    kMenuLayerZ = 200,
+    kLoadingLayerZ = 300
+};
+
 @interface GameScene ()
+
+@property (nonatomic) BOOL contentCreated;
 
 @property (nonatomic, assign) int animalIndex;
 @property (nonatomic, assign) int animalCategory;
-@property (nonatomic, strong) SKNode *backgroundLayer;
-@property (nonatomic, strong) SKNode *menuLayer;
-@property (nonatomic, strong) SKNode *puzzleLayer;
 @property (nonatomic, strong) SKSpriteNode *puzzlePicture;
 
 @property (nonatomic, strong) SKSpriteButtonNode *level1Btn;
@@ -42,16 +48,40 @@
 
 @implementation GameScene
 
+- (void)dealloc {
+    
+}
+
 - (void)loadTextures {
     
     SKTextureAtlas *othersAtlas = [SKTextureAtlas atlasNamed:@"Others.atlas"];
-    SKTextureAtlas *animalAtlas = [SKTextureAtlas atlasNamed:[NSString stringWithFormat:@"Animal_%d_%d.atlas",
-                                                              self.animalCategory, self.animalIndex]];
     
-    [SKTexture preloadTextures:@[othersAtlas, animalAtlas]
-         withCompletionHandler:^{
-             
-         }];
+    NSString *animalAtlasName = [NSString stringWithFormat:@"Animal_%d_%d.atlas",
+                                 self.animalCategory, self.animalIndex];
+    SKTextureAtlas *animalAtlas = [SKTextureAtlas atlasNamed:animalAtlasName];
+    
+    [SKTextureAtlas preloadTextureAtlases:@[othersAtlas, animalAtlas]
+                    withCompletionHandler:^{
+                        
+                    }];
+}
+
+- (void)createContent {
+    //    self.backgroundLayer = [SKNode node];
+    //    [self addChild:self.backgroundLayer];
+    //    self.backgroundLayer.zPosition = kBackgroundLayerZ;
+    //
+    //    self.puzzleLayer = [SKNode node];
+    //    [self addChild:self.puzzleLayer];
+    //    self.puzzleLayer.zPosition = kPuzzleLayerZ;
+    //
+    //    self.menuLayer = [SKNode node];
+    //    [self addChild:self.menuLayer];
+    //    self.menuLayer.zPosition = kMenuLayerZ;
+    
+    [self initBackground];
+    
+    [self initButtons];
 }
 
 - (instancetype)initWithSize:(CGSize)size
@@ -63,20 +93,6 @@
         self.animalIndex = index;
         
         [self loadTextures];
-        
-        self.backgroundLayer = [SKNode node];
-        [self addChild:self.backgroundLayer];
-        self.backgroundLayer.zPosition = 0;
-        
-        self.puzzleLayer = [SKNode node];
-        [self addChild:self.puzzleLayer];
-        self.puzzleLayer.zPosition = 1;
-        
-        self.menuLayer = [SKNode node];
-        [self addChild:self.menuLayer];
-        self.menuLayer.zPosition = 2;
-        
-        [self initBackground];
     }
     return self;
 }
@@ -85,15 +101,6 @@
                     levelData:(AnimalCategory)category
                   animalIndex:(int)index {
     return [[self alloc] initWithSize:size levelData:category animalIndex:index];
-}
-
-- (void)playButtonAnimation:(SKNode *)button {
-    id a1 = [SKAction scaleTo:1.3f duration:0.2f];
-    id a2 = [SKAction scaleTo:0.8f duration:0.2f];
-    id a3 = [SKAction scaleTo:1.1f duration:0.2f];
-    id a4 = [SKAction scaleTo:1.0f duration:0.2f];
-    
-    [button runAction:[SKAction sequence:@[a1, a2, a3, a4]]];
 }
 
 - (void)initButtons {
@@ -105,38 +112,13 @@
                                                                                                                 waitForCompletion:NO]];
                                                                                  }
                                                                                  
-                                                                                 SKTransition *transition = [SKTransition moveInWithDirection:SKTransitionDirectionUp duration:0.8f];
-                                                                                 
-                                                                                 LoadingScene *loadingScene = [LoadingScene sceneWithSize:self.size];
-                                                                                 [loadingScene setLoadingImage:[UIImage imageNamed:@"Default-Landscape~ipad"]];
-                                                                                 [loadingScene setLoadingBlock:^{
-                                                                                     // load textures
-                                                                                     
-                                                                                 }];
-                                                                                 [loadingScene setNextScene:[BookScene sceneWithSize:self.size]];
-                                                                                 
-                                                                                 [self.view presentScene:loadingScene transition:transition];
-                                                                             }];
-    closeBtn.position = skp(50, 50);
-    [self addChild:closeBtn];
-
-    SKSpriteButtonNode *homeBtn = [SKSpriteButtonNode buttonNodeWithNormalTexture:[SKTexture textureWithImageNamed:@"home_btn.png"]
-                                                                   selectedTexture:nil
-                                                                             block:^(id sender) {
-                                                                                 if ([Utility sharedUtility].isSoundAvaliable) {
-                                                                                     [self runAction:[SKAction playSoundFileNamed:kSoundEffectClick
-                                                                                                                waitForCompletion:NO]];
-                                                                                 }
-                                                                                 
                                                                                  SKTransition *transition = [SKTransition fadeWithDuration:0.8f];
-                                                                                 [self.view presentScene:[MenuScene sceneWithSize:self.size]
+                                                                                 [self.view presentScene:[BookScene sceneWithSize:self.size]
                                                                                               transition:transition];
                                                                              }];
-    homeBtn.position = skp(50, 150);
-    [self addChild:homeBtn];
+    closeBtn.position = skp(50, 50);
     
-    
-    self.level1Btn = [SKSpriteButtonNode buttonNodeWithNormalTexture:[SKTexture textureWithImageNamed:@"level1_btn.png"]
+    SKSpriteButtonNode *homeBtn = [SKSpriteButtonNode buttonNodeWithNormalTexture:[SKTexture textureWithImageNamed:@"home_btn.png"]
                                                                   selectedTexture:nil
                                                                             block:^(id sender) {
                                                                                 if ([Utility sharedUtility].isSoundAvaliable) {
@@ -144,10 +126,24 @@
                                                                                                                waitForCompletion:NO]];
                                                                                 }
                                                                                 
-                                                                                [self playLevel:kLevelType2x2];
+                                                                                SKTransition *transition = [SKTransition fadeWithDuration:0.8f];
+                                                                                [self.view presentScene:[MenuScene sceneWithSize:self.size]
+                                                                                             transition:transition];
                                                                             }];
+    homeBtn.position = skp(50, 150);
+    
+    
+    self.level1Btn = [SKSpriteButtonNode buttonNodeWithNormalTexture:[SKTexture textureWithImageNamed:@"level1_btn.png"]
+                                                     selectedTexture:nil
+                                                               block:^(id sender) {
+                                                                   if ([Utility sharedUtility].isSoundAvaliable) {
+                                                                       [self runAction:[SKAction playSoundFileNamed:kSoundEffectClick
+                                                                                                  waitForCompletion:NO]];
+                                                                   }
+                                                                   
+                                                                   [self playLevel:kLevelType2x2];
+                                                               }];
     self.level1Btn.position = skp(900, 350);
-    [self addChild:self.level1Btn];
     self.level1Btn.scale = 0;
     
     self.level2Btn = [SKSpriteButtonNode buttonNodeWithNormalTexture:[SKTexture textureWithImageNamed:@"level2_btn.png"]
@@ -164,54 +160,73 @@
     self.level2Btn.scale = 0;
     
     self.level3Btn = [SKSpriteButtonNode buttonNodeWithNormalTexture:[SKTexture textureWithImageNamed:@"level3_btn.png"]
-                                             selectedTexture:nil
-                                                      block:^(id sender) {
-                                                          if ([Utility sharedUtility].isSoundAvaliable) {
-                                                              [self runAction:[SKAction playSoundFileNamed:kSoundEffectClick
-                                                                                         waitForCompletion:NO]];
-                                                          }
-                                                          
-                                                          [self playLevel:kLevelType3x3];
-                                                      }];
+                                                     selectedTexture:nil
+                                                               block:^(id sender) {
+                                                                   if ([Utility sharedUtility].isSoundAvaliable) {
+                                                                       [self runAction:[SKAction playSoundFileNamed:kSoundEffectClick
+                                                                                                  waitForCompletion:NO]];
+                                                                   }
+                                                                   
+                                                                   [self playLevel:kLevelType3x3];
+                                                               }];
     self.level3Btn.position = skp(900, 150);
     self.level3Btn.scale = 0;
     
     self.nextBtn = [SKSpriteButtonNode buttonNodeWithNormalTexture:[SKTexture textureWithImageNamed:@"next_btn.png"]
-                                           selectedTexture:nil
-                                                    block:^(id sender) {
-                                                        if ([Utility sharedUtility].isSoundAvaliable) {
-                                                            [self runAction:[SKAction playSoundFileNamed:kSoundEffectClick
-                                                                                       waitForCompletion:NO]];
-                                                        }
-                                                        
-                                                        
-                                                        if (!self.nextBtn.paused) {
-                                                            [self.nextBtn removeAllActions];
-                                                            self.nextBtn.scale = 1.0f;
-                                                        }
-                                                        
-                                                        [self playNextAnimal];
-                                                    }];
+                                                   selectedTexture:nil
+                                                             block:^(id sender) {
+                                                                 if ([Utility sharedUtility].isSoundAvaliable) {
+                                                                     [self runAction:[SKAction playSoundFileNamed:kSoundEffectClick
+                                                                                                waitForCompletion:NO]];
+                                                                 }
+                                                                 
+                                                                 
+                                                                 if (!self.nextBtn.paused) {
+                                                                     [self.nextBtn removeAllActions];
+                                                                     self.nextBtn.scale = 1.0f;
+                                                                 }
+                                                                 
+                                                                 [self playNextAnimal];
+                                                             }];
     self.nextBtn.position = skp(self.winSize.width-50, 50);
     self.nextBtn.alpha = 0;
     
-    [self.menuLayer addChild:closeBtn];
-    [self.menuLayer addChild:homeBtn];
-    [self.menuLayer addChild:self.level1Btn];
-    [self.menuLayer addChild:self.level2Btn];
-    [self.menuLayer addChild:self.level3Btn];
-    [self.menuLayer addChild:self.nextBtn];
+    //    CGFloat z = kMenuLayerZ;
+    closeBtn.zPosition = kMenuLayerZ;
+    homeBtn.zPosition = kMenuLayerZ;
+    self.level1Btn.zPosition = kMenuLayerZ;
+    self.level2Btn.zPosition = kMenuLayerZ;
+    self.level3Btn.zPosition = kMenuLayerZ;
+    self.nextBtn.zPosition = kMenuLayerZ;
+    
+    [self addChild:closeBtn];
+    [self addChild:homeBtn];
+    [self addChild:self.level1Btn];
+    [self addChild:self.level2Btn];
+    [self addChild:self.level3Btn];
+    [self addChild:self.nextBtn];
     
     // animations
-    [self playButtonAnimation:self.level1Btn];
-    [self performSelector:@selector(playButtonAnimation:) withObject:self.level2Btn afterDelay:0.3f];
-    [self performSelector:@selector(playButtonAnimation:) withObject:self.level3Btn afterDelay:0.6f];
+    SKAction *animation = [SKAction sequence:@[[SKAction scaleTo:1.3f duration:0.2f],
+                                               [SKAction scaleTo:0.8f duration:0.2f],
+                                               [SKAction scaleTo:1.1f duration:0.2f],
+                                               [SKAction scaleTo:1.0f duration:0.2f]]];
+    
+    [self.level1Btn runAction:animation];
+    [self.level2Btn runAction:[SKAction sequence:@[[SKAction waitForDuration:0.3f],
+                                                   animation]]];
+    [self.level3Btn runAction:[SKAction sequence:@[[SKAction waitForDuration:0.6f],
+                                                   animation]]];
     
     self.selectLevel = YES;
 }
 
 - (void)didMoveToView:(SKView *)view {
-    [self initButtons];
+    if (!self.contentCreated) {
+        self.contentCreated = YES;
+        
+        [self createContent];
+    }
 }
 
 - (void)initBackground {
@@ -231,24 +246,30 @@
         patternFile = @"bg_pattern_3.png";
     }
     
+    CGFloat z = kBackgroundLayerZ;
+    
     SKSpriteNode *background = [SKSpriteNode spriteNodeWithColor:color
-                                                    size:self.size];
+                                                            size:self.size];
     background.position = skp(self.centerX, self.centerY);
-    [self.backgroundLayer addChild:background];
+    [self addChild:background];
+    background.zPosition = z++;
     
     SKSpriteNode *pattern = [SKSpriteNode spriteNodeWithImageNamed:patternFile];
     pattern.position = skp(self.centerX, self.centerY);
-    [self.backgroundLayer addChild:pattern];
+    [self addChild:pattern];
+    pattern.zPosition = z++;
     
     self.woodBlock = [SKSpriteNode spriteNodeWithImageNamed:@"puzzle_bg.png"];
     self.woodBlock.position = skp(self.centerX, 319);
     self.woodBlock.zPosition = 0;
-    [self.backgroundLayer addChild:self.woodBlock];
+    [self addChild:self.woodBlock];
+    self.woodBlock.zPosition = z++;
     
     NSString *file = [NSString stringWithFormat:@"animal_%d_%d.png", self.animalCategory, self.animalIndex];
     self.puzzlePicture = [SKSpriteNode spriteNodeWithImageNamed:file];
     self.puzzlePicture.position = skp(self.centerX-2, 320);
-    [self.backgroundLayer addChild:self.puzzlePicture];
+    [self addChild:self.puzzlePicture];
+    self.puzzlePicture.zPosition = z++;
 }
 
 - (void)moveBlocks {
@@ -260,39 +281,41 @@
         float randomY = randomBetween(height*0.5, self.size.height - height*0.5);
         
         SKAction *move = [SKAction moveTo:skp(randomX, randomY) duration:0.5f];
-        [block runAction:move];
+        [block runAction:move completion:^{
+            block.userInteractionEnabled = YES;
+        }];
     }
 }
 
 - (void)startParticle {
-//    CCParticleSystem *particle = [[CCParticleSystemQuad alloc] initWithTotalParticles:50];
-//    CCTexture2D *texture = [[CCTextureCache sharedTextureCache] addImage:@"particle_star.png"];
-//    particle.texture = texture;
-//    particle.emissionRate = 30;
-//    particle.angle = 90.0;
-//    particle.angleVar = 5.0;
-//    ccBlendFunc blendFunc = {GL_SRC_ALPHA, GL_ONE};
-//    particle.blendFunc = blendFunc;
-//    particle.duration = -1.00;
-//    particle.emitterMode = kCCParticleModeGravity;
-//    ccColor4F starColor = {0.7, 0.8, 1.0, 1.0};
-//    particle.startColor = starColor;
-//    ccColor4F starColorVar = {0.14, 0.14, 0.14, 0.5};
-//    particle.startColorVar = starColorVar;
-//    ccColor4F endColor = {0.7, 0.8, 1.0, 0.0};
-//    particle.endColor = endColor;
-//    ccColor4F endColorVar = {0.42, 0.47, 0.47, 0.43};
-//    particle.endColorVar = endColorVar;
-//    particle.startSize = 15.0;
-//    particle.startSizeVar = 15.0;
-//    particle.endSize = -1;
-//    particle.totalParticles = 50;
-//    particle.life = 3;
-//    particle.lifeVar = 2;
-//    particle.position = self.woodBlock.position;
-//    particle.posVar = ccp(self.woodBlock.contentSize.width*0.5 - 20,
-//                          self.woodBlock.contentSize.height*0.5 - 20);
-//    [self.menuLayer addChild:particle z:0 tag:kParticleTag];
+    //    CCParticleSystem *particle = [[CCParticleSystemQuad alloc] initWithTotalParticles:50];
+    //    CCTexture2D *texture = [[CCTextureCache sharedTextureCache] addImage:@"particle_star.png"];
+    //    particle.texture = texture;
+    //    particle.emissionRate = 30;
+    //    particle.angle = 90.0;
+    //    particle.angleVar = 5.0;
+    //    ccBlendFunc blendFunc = {GL_SRC_ALPHA, GL_ONE};
+    //    particle.blendFunc = blendFunc;
+    //    particle.duration = -1.00;
+    //    particle.emitterMode = kCCParticleModeGravity;
+    //    ccColor4F starColor = {0.7, 0.8, 1.0, 1.0};
+    //    particle.startColor = starColor;
+    //    ccColor4F starColorVar = {0.14, 0.14, 0.14, 0.5};
+    //    particle.startColorVar = starColorVar;
+    //    ccColor4F endColor = {0.7, 0.8, 1.0, 0.0};
+    //    particle.endColor = endColor;
+    //    ccColor4F endColorVar = {0.42, 0.47, 0.47, 0.43};
+    //    particle.endColorVar = endColorVar;
+    //    particle.startSize = 15.0;
+    //    particle.startSizeVar = 15.0;
+    //    particle.endSize = -1;
+    //    particle.totalParticles = 50;
+    //    particle.life = 3;
+    //    particle.lifeVar = 2;
+    //    particle.position = self.woodBlock.position;
+    //    particle.posVar = ccp(self.woodBlock.contentSize.width*0.5 - 20,
+    //                          self.woodBlock.contentSize.height*0.5 - 20);
+    //    [self.menuLayer addChild:particle z:0 tag:kParticleTag];
 }
 
 - (void)addAnimalTitle {
@@ -330,7 +353,8 @@
         label.fontSize = 100;
         label.text = c;
         label.position = skp(self.centerX, self.size.height - 150);
-        [self.puzzleLayer addChild:label];
+        [self addChild:label];
+        label.zPosition = kMenuLayerZ;
         
         if (self.animalCategory == kAnimalCategoryFarm) {
             label.fontColor = skColor3(255, 156, 0);
@@ -398,11 +422,227 @@
 }
 
 - (void)playLevel:(LevelType)level {
+    self.isGameFinish = NO;
     
+    self.currnetLevel = level;
+    
+    self.blockNum = 0;
+    NSString *preName = nil;
+    if (level == kLevelType2x2) {
+        self.blockNum = 4;
+        preName = @"2x2";
+    }
+    else if (level == kLevelType3x2) {
+        self.blockNum = 6;
+        preName = @"3x2";
+    }
+    else {
+        self.blockNum = 9;
+        preName = @"3x3";
+    }
+    
+    self.puzzleBlocks = [NSMutableArray arrayWithCapacity:self.blockNum];
+    
+    NSMutableArray *temp = [NSMutableArray new];
+    for (int i = 0; i != self.blockNum; i++) {
+        NSString *frameName = [NSString stringWithFormat:@"animal_%d_%d_%@_%d.png",
+                               self.animalCategory, self.animalIndex, preName, i];
+        PuzzleBlock *block = [PuzzleBlock spriteNodeWithImageNamed:frameName];
+        block.position = [[[Utility blockPositionForLevelType:level] objectAtIndex:i] CGPointValue];
+        block.targetPos = block.position;
+        [self addChild:block];
+        block.zPosition = kPuzzleLayerZ;
+        
+        [temp addObject:block];
+        
+        block.gameScene = self;
+        
+        block.alpha = 0;
+        
+        [block runAction:[SKAction fadeInWithDuration:kFadeDuration]];
+    }
+    self.puzzleBlocks = [NSArray arrayWithArray:temp];
+    
+    [self.puzzlePicture runAction:[SKAction sequence:@[[SKAction waitForDuration:kFadeDuration],
+                                                       [SKAction runBlock:^{
+        self.puzzlePicture.alpha = 0;
+    }]]]];
+    
+    [self runAction:[SKAction sequence:@[[SKAction waitForDuration:kFadeDuration],
+                                         [SKAction performSelector:@selector(moveBlocks)
+                                                          onTarget:self]]]];
+    
+    self.finishBlockNumber = 0;
+    
+    if (self.selectLevel) {
+        self.selectLevel = NO;
+        
+        [self.level1Btn runAction:[SKAction sequence:@[[SKAction fadeOutWithDuration:kFadeDuration],
+                                                       [SKAction removeFromParent]]]];
+        [self.level2Btn runAction:[SKAction sequence:@[[SKAction fadeOutWithDuration:kFadeDuration],
+                                                       [SKAction removeFromParent]]]];
+        [self.level3Btn runAction:[SKAction sequence:@[[SKAction fadeOutWithDuration:kFadeDuration],
+                                                       [SKAction removeFromParent]]]];
+        
+        [self.nextBtn runAction:[SKAction fadeInWithDuration:kFadeDuration]];
+    }
+    else {
+        self.nextBtn.alpha = 0.0f;
+    }
+    
+    self.isGameStart = YES;
 }
 
 - (void)playNextAnimal {
+    BOOL isAppUpgrade = [Utility isAppUpgrade];
     
+    int nextAnimalIndex = self.animalIndex;
+    int nextAnimalCategory = self.animalCategory;
+    if (self.animalIndex < 5) {
+        nextAnimalIndex++;
+    }
+    else if (self.animalIndex == 5) {
+        if (self.animalCategory < 2) {
+            nextAnimalCategory++;
+        }
+        else if (self.animalCategory == 2) {
+            nextAnimalCategory = 0;
+            nextAnimalIndex = 0;
+        }
+    }
+    
+    BOOL isLock = !isAppUpgrade && nextAnimalIndex >= (3-nextAnimalCategory);
+    if (isLock) {
+        if ([Utility sharedUtility].isSoundAvaliable) {
+            [self runAction:[SKAction playSoundFileNamed:kSoundEffectError waitForCompletion:NO]];
+        }
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Upgrade to full version"
+                                                        message:@"Upgrade to full version to play all puzzles and remove ad banner forever!"
+                                                       delegate:self
+                                              cancelButtonTitle:@"No, Thanks"
+                                              otherButtonTitles:@"OK", nil];
+        [alert show];
+        return;
+    }
+    
+    SKNode *loadingLayer = [SKNode node];
+    loadingLayer.position = skp(self.centerX, self.centerY);
+    [self addChild:loadingLayer];
+    loadingLayer.zPosition = kLoadingLayerZ;
+    
+    UIColor *color1;
+    UIColor *color2;
+    if (self.animalCategory == kAnimalCategoryFarm) {
+        color1 = skColor3(255, 177, 0);
+        color2 = skColor3(255, 205, 92);
+    }
+    else if (self.animalCategory == kAnimalCategoryGrass) {
+        color1 = skColor3(85, 189, 0);
+        color2 = skColor3(136, 214, 0);
+    }
+    else if (self.animalCategory == kAnimalCategoryOcean) {
+        color1 = skColor3(0, 168, 255);
+        color2 = skColor3(29, 194, 255);
+    }
+    
+    for (int i = 0; i != 16; i++) {
+        
+        SKSpriteNode *topPattern = [SKSpriteNode spriteNodeWithImageNamed:@"top_pattern.png"];
+        
+        float width = topPattern.size.width;
+        
+        topPattern.position = skp((i+0.5)*width - 20, self.size.height*0.5);
+        [loadingLayer addChild:topPattern];
+        
+        if (i % 2 == 0) {
+            topPattern.color = color1;
+        }
+        else {
+            topPattern.color = color2;
+        }
+    }
+    
+    SKSpriteNode *logo = [SKSpriteNode spriteNodeWithImageNamed:@"logo.png"];
+    logo.position = skp(self.size.width*0.5, self.size.height*0.5);
+    [loadingLayer addChild:logo];
+    
+    SKSpriteNode *eye1 = [SKSpriteNode spriteNodeWithImageNamed:@"eye_0.png"];
+    eye1.position = skp(73 - logo.size.width*0.5, 122 - logo.size.height*0.5);
+    [logo addChild:eye1];
+    
+    SKSpriteNode *eye2 = [SKSpriteNode spriteNodeWithImageNamed:@"eye_0.png"];
+    eye2.position = skp(100 - logo.size.width*0.5, 127 - logo.size.height*0.5);
+    [logo addChild:eye2];
+    
+    SKSpriteNode *eye3 = [SKSpriteNode spriteNodeWithImageNamed:@"eye_0.png"];
+    eye3.position = skp(312 - logo.size.width*0.5, 125 - logo.size.height*0.5);
+    [logo addChild:eye3];
+    
+    SKSpriteNode *eye4 = [SKSpriteNode spriteNodeWithImageNamed:@"eye_0.png"];
+    eye4.position = skp(342 - logo.size.width*0.5, 127 - logo.size.height*0.5);
+    [logo addChild:eye4];
+    
+    loadingLayer.position = skp(0,self.size.height + 65);
+    
+    [loadingLayer runAction:[SKAction sequence:@[
+                                                 [SKAction moveTo:CGPointZero duration:kFadeDuration],
+                                                 [SKAction runBlock:^{
+        self.animalIndex = nextAnimalIndex;
+        self.animalCategory = nextAnimalCategory;
+        
+        NSString *animalAtlasName = [NSString stringWithFormat:@"Animal_%d_%d.atlas",
+                                     self.animalCategory, self.animalIndex];
+        SKTextureAtlas *animalAtlas = [SKTextureAtlas atlasNamed:animalAtlasName];
+        
+        [SKTextureAtlas preloadTextureAtlases:@[animalAtlas]
+                        withCompletionHandler:^{
+                            
+                        }];
+        
+        //        CCParticleSystem *particle = (CCParticleSystem *)[self.menuLayer getChildByTag:kParticleTag];
+        //        if (particle) {
+        //            [particle removeFromParentAndCleanup:YES];
+        //        }
+        
+        NSString *file = [NSString stringWithFormat:@"animal_%d_%d.png", self.animalCategory, self.animalIndex];
+        [self.puzzlePicture setTexture:[SKTexture textureWithImageNamed:file]];
+        
+        for (PuzzleBlock *block in self.puzzleBlocks) {
+            [block removeFromParent];
+        }
+        self.puzzleBlocks = nil;
+    }],
+                                                 [SKAction waitForDuration:kFadeDuration],
+                                                 [SKAction moveTo:skp(0, self.size.height+65) duration:kFadeDuration],
+                                                 [SKAction runBlock:^{
+        [self playLevel:self.currnetLevel];
+    }]
+                                                 ]
+                             ] completion:^{
+        [loadingLayer removeFromParent];
+    }];
+    
+}
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if (buttonIndex != alertView.cancelButtonIndex) {
+        if ([MyIAPHelper sharedInstance].upgradeProduct) {
+            [[MyIAPHelper sharedInstance] buyProduct:[MyIAPHelper sharedInstance].upgradeProduct];
+        }
+        else {
+            [[MyIAPHelper sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
+                if (products.count == 1) {
+                    SKProduct *product = [products objectAtIndex:0];
+                    [[MyIAPHelper sharedInstance] buyProduct:product];
+                    [MyIAPHelper sharedInstance].upgradeProduct = product;
+                }
+            }];
+        }
+    }
 }
 
 @end
