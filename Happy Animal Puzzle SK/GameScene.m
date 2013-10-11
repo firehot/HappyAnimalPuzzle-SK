@@ -17,12 +17,7 @@
 #define kFadeDuration 1.0f
 #define kParticleTag 100
 
-enum {
-    kBackgroundLayerZ = 0,
-    kPuzzleLayerZ = 100,
-    kMenuLayerZ = 200,
-    kLoadingLayerZ = 300
-};
+#define kTitleName @"title"
 
 @interface GameScene ()
 
@@ -273,18 +268,21 @@ enum {
 }
 
 - (void)moveBlocks {
-    for (PuzzleBlock *block in self.puzzleBlocks) {
-        float width = block.size.width;
-        float height = block.size.height;
-        
-        float randomX = randomBetween(width*0.5, self.size.width-width*0.5);
-        float randomY = randomBetween(height*0.5, self.size.height - height*0.5);
-        
-        SKAction *move = [SKAction moveTo:skp(randomX, randomY) duration:0.5f];
-        [block runAction:move completion:^{
-            block.userInteractionEnabled = YES;
-        }];
-    }
+    [self enumerateChildNodesWithName:kPuzzleBlockName
+                           usingBlock:^(SKNode *node, BOOL *stop) {
+                               SKSpriteNode *block = (SKSpriteNode *)node;
+                               
+                               float width = block.size.width;
+                               float height = block.size.height;
+                               
+                               float randomX = randomBetween(width*0.5, self.size.width-width*0.5);
+                               float randomY = randomBetween(height*0.5, self.size.height - height*0.5);
+                               
+                               SKAction *move = [SKAction moveTo:skp(randomX, randomY) duration:0.5f];
+                               [block runAction:move completion:^{
+                                   block.userInteractionEnabled = YES;
+                               }];
+                           }];
 }
 
 - (void)startParticle {
@@ -355,6 +353,7 @@ enum {
         label.position = skp(self.centerX, self.size.height - 150);
         [self addChild:label];
         label.zPosition = kMenuLayerZ;
+        label.name = kTitleName;
         
         if (self.animalCategory == kAnimalCategoryFarm) {
             label.fontColor = skColor3(255, 156, 0);
@@ -366,18 +365,9 @@ enum {
             label.fontColor = skColor3(0, 168, 255);
         }
         
-        totalWidth += label.frame.size.width + f*2;
+        float width = label.frame.size.width;
+        totalWidth += width + f*2;
         [characters addObject:label];
-        
-        label.scale = 0.01;
-        
-        id a1 = [SKAction scaleTo:1.3f duration:0.2f];
-        id a2 = [SKAction scaleTo:0.8f duration:0.2f];
-        id a3 = [SKAction scaleTo:1.1f duration:0.2f];
-        id a4 = [SKAction scaleTo:1.0f duration:0.2f];
-        id a5 = [SKAction waitForDuration:i*0.2f];
-        id a6 = [SKAction sequence:@[a5, a1,a2,a3,a4]];
-        [label runAction:a6];
     }
     
     float temp = 0.0f;
@@ -388,6 +378,16 @@ enum {
         
         label.position = skp(self.size.width*0.5 - totalWidth*0.5 + temp, self.size.height - 150);
         temp += width + f*2;
+        
+        label.scale = 0.01;
+        
+        id a1 = [SKAction scaleTo:1.3f duration:0.2f];
+        id a2 = [SKAction scaleTo:0.8f duration:0.2f];
+        id a3 = [SKAction scaleTo:1.1f duration:0.2f];
+        id a4 = [SKAction scaleTo:1.0f duration:0.2f];
+        id a5 = [SKAction waitForDuration:i*0.2f];
+        id a6 = [SKAction sequence:@[a5, a1,a2,a3,a4]];
+        [label runAction:a6];
     }
 }
 
@@ -401,11 +401,13 @@ enum {
                                        waitForCompletion:NO]];
         }
         
-        [self.puzzlePicture runAction:[SKAction fadeInWithDuration:kFadeDuration]];
+        self.puzzlePicture.alpha = 1.0f;
         
-        for (PuzzleBlock *block in self.puzzleBlocks) {
-            [block runAction:[SKAction fadeOutWithDuration:kFadeDuration]];
-        }
+        [self enumerateChildNodesWithName:kPuzzleBlockName
+                               usingBlock:^(SKNode *node, BOOL *stop) {
+                                   SKSpriteNode *block = (SKSpriteNode *)node;
+                                   [block runAction:[SKAction fadeOutWithDuration:kFadeDuration]];
+                               }];
         
         [self startParticle];
         [self addAnimalTitle];
@@ -441,9 +443,6 @@ enum {
         preName = @"3x3";
     }
     
-    self.puzzleBlocks = [NSMutableArray arrayWithCapacity:self.blockNum];
-    
-    NSMutableArray *temp = [NSMutableArray new];
     for (int i = 0; i != self.blockNum; i++) {
         NSString *frameName = [NSString stringWithFormat:@"animal_%d_%d_%@_%d.png",
                                self.animalCategory, self.animalIndex, preName, i];
@@ -452,8 +451,8 @@ enum {
         block.targetPos = block.position;
         [self addChild:block];
         block.zPosition = kPuzzleLayerZ;
+        block.name = kPuzzleBlockName;
         
-        [temp addObject:block];
         
         block.gameScene = self;
         
@@ -461,7 +460,6 @@ enum {
         
         [block runAction:[SKAction fadeInWithDuration:kFadeDuration]];
     }
-    self.puzzleBlocks = [NSArray arrayWithArray:temp];
     
     [self.puzzlePicture runAction:[SKAction sequence:@[[SKAction waitForDuration:kFadeDuration],
                                                        [SKAction runBlock:^{
@@ -484,10 +482,11 @@ enum {
         [self.level3Btn runAction:[SKAction sequence:@[[SKAction fadeOutWithDuration:kFadeDuration],
                                                        [SKAction removeFromParent]]]];
         
+        self.nextBtn.alpha = 0.0f;
         [self.nextBtn runAction:[SKAction fadeInWithDuration:kFadeDuration]];
     }
     else {
-        self.nextBtn.alpha = 0.0f;
+        self.nextBtn.alpha = 1.0f;
     }
     
     self.isGameStart = YES;
@@ -555,6 +554,7 @@ enum {
         topPattern.position = skp((i+0.5)*width - 20, self.size.height*0.5);
         [loadingLayer addChild:topPattern];
         
+        topPattern.colorBlendFactor = 1.0f;
         if (i % 2 == 0) {
             topPattern.color = color1;
         }
@@ -605,13 +605,18 @@ enum {
         //            [particle removeFromParentAndCleanup:YES];
         //        }
         
-        NSString *file = [NSString stringWithFormat:@"animal_%d_%d.png", self.animalCategory, self.animalIndex];
-        [self.puzzlePicture setTexture:[SKTexture textureWithImageNamed:file]];
+        SKTexture *texture = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"animal_%d_%d.png", self.animalCategory, self.animalIndex]];
+        [self.puzzlePicture setTexture:texture];
+        self.puzzlePicture.alpha = 1.0f;
         
-        for (PuzzleBlock *block in self.puzzleBlocks) {
-            [block removeFromParent];
-        }
-        self.puzzleBlocks = nil;
+        [self enumerateChildNodesWithName:kPuzzleBlockName
+                               usingBlock:^(SKNode *node, BOOL *stop) {
+                                   [node removeFromParent];
+                               }];
+        
+        [self enumerateChildNodesWithName:kTitleName usingBlock:^(SKNode *node, BOOL *stop) {
+            [node removeFromParent];
+        }];
     }],
                                                  [SKAction waitForDuration:kFadeDuration],
                                                  [SKAction moveTo:skp(0, self.size.height+65) duration:kFadeDuration],

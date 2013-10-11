@@ -8,13 +8,21 @@
 
 #import <SpriteKit/SpriteKit.h>
 
+enum {
+    kBackgroundLayerZ = 0,
+    kPuzzleLayerZ = 100,
+    kMenuLayerZ = 200,
+    kLoadingLayerZ = 300
+};
+
+#define kPuzzleBlockName @"block"
+
 @interface GameScene : SKScene
 
 + (instancetype)sceneWithSize:(CGSize)size
                     levelData:(AnimalCategory)category
                   animalIndex:(int)index;
 
-@property (nonatomic, strong) NSArray *puzzleBlocks;
 @property (nonatomic) int finishBlockNumber;
 
 @end

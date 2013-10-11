@@ -16,12 +16,13 @@
         return;
     }
     
-    int maxZ = self.zPosition;
-    for (PuzzleBlock *block in self.gameScene.puzzleBlocks) {
-        if (block != self && block.zPosition > maxZ) {
-            maxZ = block.zPosition;
-        }
-    }
+    __block int maxZ = self.zPosition;
+    [self.gameScene enumerateChildNodesWithName:kPuzzleBlockName
+                                     usingBlock:^(SKNode *node, BOOL *stop) {
+                                         if (node != self && node.zPosition > maxZ) {
+                                             maxZ = node.zPosition;
+                                         }
+                                     }];
     self.zPosition = maxZ+1;
 }
 
@@ -41,7 +42,7 @@
         
         self.userInteractionEnabled = NO;
         
-        self.zPosition = 0;
+        self.zPosition = kPuzzleLayerZ-1;
         
         self.gameScene.finishBlockNumber++;
     }
