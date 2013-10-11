@@ -18,6 +18,7 @@
 #define kParticleTag 100
 
 #define kTitleName @"title"
+#define kParticleName @"particle"
 
 @interface GameScene ()
 
@@ -62,17 +63,6 @@
 }
 
 - (void)createContent {
-    //    self.backgroundLayer = [SKNode node];
-    //    [self addChild:self.backgroundLayer];
-    //    self.backgroundLayer.zPosition = kBackgroundLayerZ;
-    //
-    //    self.puzzleLayer = [SKNode node];
-    //    [self addChild:self.puzzleLayer];
-    //    self.puzzleLayer.zPosition = kPuzzleLayerZ;
-    //
-    //    self.menuLayer = [SKNode node];
-    //    [self addChild:self.menuLayer];
-    //    self.menuLayer.zPosition = kMenuLayerZ;
     
     [self initBackground];
     
@@ -286,34 +276,16 @@
 }
 
 - (void)startParticle {
-    //    CCParticleSystem *particle = [[CCParticleSystemQuad alloc] initWithTotalParticles:50];
-    //    CCTexture2D *texture = [[CCTextureCache sharedTextureCache] addImage:@"particle_star.png"];
-    //    particle.texture = texture;
-    //    particle.emissionRate = 30;
-    //    particle.angle = 90.0;
-    //    particle.angleVar = 5.0;
-    //    ccBlendFunc blendFunc = {GL_SRC_ALPHA, GL_ONE};
-    //    particle.blendFunc = blendFunc;
-    //    particle.duration = -1.00;
-    //    particle.emitterMode = kCCParticleModeGravity;
-    //    ccColor4F starColor = {0.7, 0.8, 1.0, 1.0};
-    //    particle.startColor = starColor;
-    //    ccColor4F starColorVar = {0.14, 0.14, 0.14, 0.5};
-    //    particle.startColorVar = starColorVar;
-    //    ccColor4F endColor = {0.7, 0.8, 1.0, 0.0};
-    //    particle.endColor = endColor;
-    //    ccColor4F endColorVar = {0.42, 0.47, 0.47, 0.43};
-    //    particle.endColorVar = endColorVar;
-    //    particle.startSize = 15.0;
-    //    particle.startSizeVar = 15.0;
-    //    particle.endSize = -1;
-    //    particle.totalParticles = 50;
-    //    particle.life = 3;
-    //    particle.lifeVar = 2;
-    //    particle.position = self.woodBlock.position;
-    //    particle.posVar = ccp(self.woodBlock.contentSize.width*0.5 - 20,
-    //                          self.woodBlock.contentSize.height*0.5 - 20);
-    //    [self.menuLayer addChild:particle z:0 tag:kParticleTag];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Spark" ofType:@"sks"];
+    
+    SKEmitterNode *particle = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+    particle.particlePosition = self.puzzlePicture.position;
+    particle.particlePositionRange = CGVectorMake(self.puzzlePicture.size.width,
+                                                  self.puzzlePicture.size.height);
+
+    [self addChild:particle];
+    particle.zPosition = kLoadingLayerZ;
+    particle.name = kParticleName;
 }
 
 - (void)addAnimalTitle {
@@ -600,10 +572,7 @@
                             
                         }];
         
-        //        CCParticleSystem *particle = (CCParticleSystem *)[self.menuLayer getChildByTag:kParticleTag];
-        //        if (particle) {
-        //            [particle removeFromParentAndCleanup:YES];
-        //        }
+        [[self childNodeWithName:kParticleName] removeFromParent];
         
         SKTexture *texture = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"animal_%d_%d.png", self.animalCategory, self.animalIndex]];
         [self.puzzlePicture setTexture:texture];

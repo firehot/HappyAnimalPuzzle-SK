@@ -111,6 +111,7 @@
 		8ADF5E9317F5768600BB6731 /* main_menu_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ADF5E9217F5768600BB6731 /* main_menu_bg@2x.png */; };
 		8ADF5E9617F57A6800BB6731 /* SKHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADF5E9517F57A6700BB6731 /* SKHelper.m */; };
 		8AE8CD2B1807D909000DD111 /* SharkSoftBites.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8AE8CD2A1807D909000DD111 /* SharkSoftBites.ttf */; };
+		8AE8CD2E1807DC29000DD111 /* Spark.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8AE8CD2C1807DC29000DD111 /* Spark.sks */; };
 		8AFB50521803EE440033585C /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AFB50511803EE440033585C /* Utility.m */; };
 		8AFB50551803F39D0033585C /* LoadingScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AFB50541803F39D0033585C /* LoadingScene.m */; };
 /* End PBXBuildFile section */
@@ -244,6 +245,7 @@
 		8ADF5E9417F57A6700BB6731 /* SKHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKHelper.h; sourceTree = "<group>"; };
 		8ADF5E9517F57A6700BB6731 /* SKHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKHelper.m; sourceTree = "<group>"; };
 		8AE8CD2A1807D909000DD111 /* SharkSoftBites.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SharkSoftBites.ttf; sourceTree = "<group>"; };
+		8AE8CD2C1807DC29000DD111 /* Spark.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Spark.sks; sourceTree = "<group>"; };
 		8AFB50501803EE440033585C /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		8AFB50511803EE440033585C /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		8AFB50531803F39D0033585C /* LoadingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingScene.h; sourceTree = "<group>"; };
@@ -366,6 +368,7 @@
 				8A5046A418054209008CD0F6 /* MyIAPHelper.h */,
 				8A5046A518054209008CD0F6 /* MyIAPHelper.m */,
 				8AE8CD2A1807D909000DD111 /* SharkSoftBites.ttf */,
+				8AE8CD2C1807DC29000DD111 /* Spark.sks */,
 				8ADF5D9517F56D7A00BB6731 /* Images.xcassets */,
 				8A344C9817F93AF400B915BA /* Texture Atlas */,
 				8ADF5DB817F56FB700BB6731 /* Images */,
@@ -568,6 +571,7 @@
 				8ADF5E6717F5730B00BB6731 /* animal_0_3@2x.png in Resources */,
 				8ADF5E2417F56FB800BB6731 /* particle_star.png in Resources */,
 				8ADF5E6517F5730B00BB6731 /* animal_0_2@2x.png in Resources */,
+				8AE8CD2E1807DC29000DD111 /* Spark.sks in Resources */,
 				8A344CBC17F93AF400B915BA /* Animal_2_1.atlas in Resources */,
 				8ADF5E6617F5730B00BB6731 /* animal_0_3.png in Resources */,
 				8ADF5E6C17F5730B00BB6731 /* animal_1_0.png in Resources */,
