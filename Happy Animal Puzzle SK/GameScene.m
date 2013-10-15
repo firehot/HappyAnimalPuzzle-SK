@@ -22,70 +22,29 @@
 
 @interface GameScene ()
 
-@property (nonatomic) BOOL contentCreated;
+@property (nonatomic) SKSpriteNode *puzzlePicture;
 
-@property (nonatomic, assign) int animalIndex;
-@property (nonatomic, assign) int animalCategory;
-@property (nonatomic, strong) SKSpriteNode *puzzlePicture;
+@property (nonatomic) SKSpriteButtonNode *level1Btn;
+@property (nonatomic) SKSpriteButtonNode *level2Btn;
+@property (nonatomic) SKSpriteButtonNode *level3Btn;
+@property (nonatomic) SKSpriteButtonNode *nextBtn;
+@property (nonatomic) LevelType currnetLevel;
 
-@property (nonatomic, strong) SKSpriteButtonNode *level1Btn;
-@property (nonatomic, strong) SKSpriteButtonNode *level2Btn;
-@property (nonatomic, strong) SKSpriteButtonNode *level3Btn;
-@property (nonatomic, strong) SKSpriteButtonNode *nextBtn;
-@property (nonatomic, assign) LevelType currnetLevel;
-
-@property (nonatomic, strong) SKSpriteNode *woodBlock;
-@property (nonatomic, assign) BOOL isGameFinish;
-@property (nonatomic, assign) int blockNum;
-@property (nonatomic, assign) BOOL isGameStart;
-@property (nonatomic, assign) BOOL selectLevel;
+@property (nonatomic) SKSpriteNode *woodBlock;
+@property (nonatomic) BOOL isGameFinish;
+@property (nonatomic) int blockNum;
+@property (nonatomic) BOOL isGameStart;
+@property (nonatomic) BOOL selectLevel;
 
 @end
 
 @implementation GameScene
-
-- (void)dealloc {
-    
-}
-
-- (void)loadTextures {
-    
-    SKTextureAtlas *othersAtlas = [SKTextureAtlas atlasNamed:@"Others.atlas"];
-    
-    NSString *animalAtlasName = [NSString stringWithFormat:@"Animal_%d_%d.atlas",
-                                 self.animalCategory, self.animalIndex];
-    SKTextureAtlas *animalAtlas = [SKTextureAtlas atlasNamed:animalAtlasName];
-    
-    [SKTextureAtlas preloadTextureAtlases:@[othersAtlas, animalAtlas]
-                    withCompletionHandler:^{
-                        
-                    }];
-}
 
 - (void)createContent {
     
     [self initBackground];
     
     [self initButtons];
-}
-
-- (instancetype)initWithSize:(CGSize)size
-                   levelData:(AnimalCategory)category
-                 animalIndex:(int)index {
-    self = [super initWithSize:size];
-    if (self) {
-        self.animalCategory = category;
-        self.animalIndex = index;
-        
-        [self loadTextures];
-    }
-    return self;
-}
-
-+ (instancetype)sceneWithSize:(CGSize)size
-                    levelData:(AnimalCategory)category
-                  animalIndex:(int)index {
-    return [[self alloc] initWithSize:size levelData:category animalIndex:index];
 }
 
 - (void)initButtons {
@@ -98,7 +57,7 @@
                                                                                  }
                                                                                  
                                                                                  SKTransition *transition = [SKTransition fadeWithDuration:0.8f];
-                                                                                 [self.view presentScene:[BookScene sceneWithSize:self.size]
+                                                                                 [self.view presentScene:self.bookScene
                                                                                               transition:transition];
                                                                              }];
     closeBtn.position = skp(50, 50);
@@ -112,7 +71,7 @@
                                                                                 }
                                                                                 
                                                                                 SKTransition *transition = [SKTransition fadeWithDuration:0.8f];
-                                                                                [self.view presentScene:[MenuScene sceneWithSize:self.size]
+                                                                                [self.view presentScene:self.bookScene.menuScene
                                                                                              transition:transition];
                                                                             }];
     homeBtn.position = skp(50, 150);
@@ -206,16 +165,20 @@
     self.selectLevel = YES;
 }
 
+- (void)dealloc {
+    
+}
+
 - (void)didMoveToView:(SKView *)view {
-    if (!self.contentCreated) {
-        self.contentCreated = YES;
-        
-        [self createContent];
-    }
+    [self createContent];
+}
+
+- (void)willMoveFromView:(SKView *)view {
+    [self removeAllChildren];
 }
 
 - (void)initBackground {
-    UIColor *color;
+    SKColor *color;
     NSString *patternFile;
     
     if (self.animalCategory == kAnimalCategoryFarm) {
@@ -502,8 +465,8 @@
     [self addChild:loadingLayer];
     loadingLayer.zPosition = kLoadingLayerZ;
     
-    UIColor *color1;
-    UIColor *color2;
+    SKColor *color1;
+    SKColor *color2;
     if (self.animalCategory == kAnimalCategoryFarm) {
         color1 = skColor3(255, 177, 0);
         color2 = skColor3(255, 205, 92);

@@ -17,12 +17,13 @@ enum {
 
 #define kPuzzleBlockName @"block"
 
+@class BookScene;
+
 @interface GameScene : SKScene
 
-+ (instancetype)sceneWithSize:(CGSize)size
-                    levelData:(AnimalCategory)category
-                  animalIndex:(int)index;
-
+@property (nonatomic) int animalIndex;
+@property (nonatomic) int animalCategory;
 @property (nonatomic) int finishBlockNumber;
+@property (nonatomic) BookScene *bookScene;
 
 @end

@@ -11,6 +11,7 @@
 #import "GameScene.h"
 #import "AppDelegate.h"
 #import "MyIAPHelper.h"
+#import "ViewController.h"
 
 #define kRateAlertTag 1
 #define kParentAlertTag 2
@@ -20,6 +21,8 @@
 @interface MenuScene ()
 
 @property (nonatomic) BOOL contentCreated;
+
+@property (nonatomic) BookScene *bookScene;
 
 @end
 
@@ -34,65 +37,115 @@
     
     SKSpriteButtonNode *farmBtn = [SKSpriteButtonNode buttonNodeWithNormalTexture:[SKTexture textureWithImageNamed:@"farm_book.png"]
                                                                   selectedTexture:nil
-                                                                            block:^(id sender) {
+                                                                            block:^(SKSpriteButtonNode *buttonNode) {
                                                                                 if ([Utility sharedUtility].isSoundAvaliable) {
                                                                                     [self runAction:[SKAction playSoundFileNamed:kSoundEffectClick
                                                                                                                waitForCompletion:NO]];
                                                                                 }
                                                                                 
-                                                                                SKTransition *transition = [SKTransition fadeWithDuration:0.8f];
-                                                                                [self.view presentScene:[BookScene sceneWithSize:self.size animalCategory:kAnimalCategoryFarm]
-                                                                                             transition:transition];
+                                                                                SKTextureAtlas *bookMenuAtlas = [SKTextureAtlas atlasNamed:[NSString stringWithFormat:@"BookMenu%d.atlas", kAnimalCategoryFarm]];
+                                                                                
+                                                                                if (!self.bookScene) {
+                                                                                    self.bookScene = [BookScene sceneWithSize:self.size];
+                                                                                    self.bookScene.menuScene = self;
+                                                                                }
+                                                                                
+                                                                                self.bookScene.animalCategory = kAnimalCategoryFarm;
+                                                                                
+                                                                                [SKTextureAtlas preloadTextureAtlases:@[bookMenuAtlas] withCompletionHandler:^{
+                                                                                    SKTransition *transition = [SKTransition fadeWithDuration:0.8f];
+                                                                                    [self.view presentScene:self.bookScene
+                                                                                                 transition:transition];
+                                                                                }];
                                                                             }];
     farmBtn.position = skp(230, 400);
     [self addChild:farmBtn];
     
     SKSpriteButtonNode *oceanBtn = [SKSpriteButtonNode buttonNodeWithNormalTexture:[SKTexture textureWithImageNamed:@"ocean_book.png"]
                                                                   selectedTexture:nil
-                                                                            block:^(id sender) {
+                                                                            block:^(SKSpriteButtonNode *buttonNode) {
                                                                                 if ([Utility sharedUtility].isSoundAvaliable) {
                                                                                     [self runAction:[SKAction playSoundFileNamed:kSoundEffectClick
                                                                                                                waitForCompletion:NO]];
                                                                                 }
                                                                                 
-                                                                                SKTransition *transition = [SKTransition fadeWithDuration:0.8f];
-                                                                                [self.view presentScene:[BookScene sceneWithSize:self.size animalCategory:kAnimalCategoryOcean]
-                                                                                             transition:transition];
+                                                                                SKTextureAtlas *bookMenuAtlas = [SKTextureAtlas atlasNamed:[NSString stringWithFormat:@"BookMenu%d.atlas", kAnimalCategoryOcean]];
+                                                                                
+                                                                                if (!self.bookScene) {
+                                                                                    self.bookScene = [BookScene sceneWithSize:self.size];
+                                                                                    self.bookScene.menuScene = self;
+                                                                                }
+                                                                                
+                                                                                self.bookScene.animalCategory = kAnimalCategoryOcean;
+                                                                                
+                                                                                [SKTextureAtlas preloadTextureAtlases:@[bookMenuAtlas] withCompletionHandler:^{
+                                                                                    SKTransition *transition = [SKTransition fadeWithDuration:0.8f];
+                                                                                    [self.view presentScene:self.bookScene
+                                                                                                 transition:transition];
+                                                                                }];
                                                                             }];
     oceanBtn.position = skp(790, 400);
     [self addChild:oceanBtn];
     
     SKSpriteButtonNode *grassBtn = [SKSpriteButtonNode buttonNodeWithNormalTexture:[SKTexture textureWithImageNamed:@"grass_book.png"]
                                                                   selectedTexture:nil
-                                                                            block:^(id sender) {
+                                                                            block:^(SKSpriteButtonNode *buttonNode) {
                                                                                 if ([Utility sharedUtility].isSoundAvaliable) {
                                                                                     [self runAction:[SKAction playSoundFileNamed:kSoundEffectClick
                                                                                                                waitForCompletion:NO]];
                                                                                 }
                                                                                 
-                                                                                SKTransition *transition = [SKTransition fadeWithDuration:0.8f];
-                                                                                [self.view presentScene:[BookScene sceneWithSize:self.size animalCategory:kAnimalCategoryGrass]
-                                                                                             transition:transition];
+                                                                                SKTextureAtlas *bookMenuAtlas = [SKTextureAtlas atlasNamed:[NSString stringWithFormat:@"BookMenu%d.atlas", kAnimalCategoryGrass]];
+                                                                                
+                                                                                if (!self.bookScene) {
+                                                                                    self.bookScene = [BookScene sceneWithSize:self.size];
+                                                                                    self.bookScene.menuScene = self;
+                                                                                }
+                                                                                
+                                                                                self.bookScene.animalCategory = kAnimalCategoryGrass;
+                                                                                
+                                                                                [SKTextureAtlas preloadTextureAtlases:@[bookMenuAtlas] withCompletionHandler:^{
+                                                                                    SKTransition *transition = [SKTransition fadeWithDuration:0.8f];
+                                                                                    [self.view presentScene:self.bookScene
+                                                                                                 transition:transition];
+                                                                                }];
                                                                             }];
     grassBtn.position = skp(510, 400);
     [self addChild:grassBtn];
     
     SKSpriteButtonNode *soundBtn = [SKSpriteButtonNode buttonNodeWithNormalTexture:[SKTexture textureWithImageNamed:@"sound.png"]
                                                                    selectedTexture:nil
-                                                                             block:^(id sender) {
+                                                                             block:^(SKSpriteButtonNode *buttonNode) {
+                                                                                 ViewController *rootController = [AppDelegate  rootViewContrller];
+                                                                                 
                                                                                  if ([Utility sharedUtility].isSoundAvaliable) {
                                                                                      [self runAction:[SKAction playSoundFileNamed:kSoundEffectClick
                                                                                                                 waitForCompletion:NO]];
+                                                                                     
+                                                                                     [rootController.backgroundMusicPlayer pause];
+                                                                                     
+                                                                                     [Utility sharedUtility].isSoundAvaliable = NO;
+                                                                                     
+                                                                                     SKSpriteNode *pauseIcon = [SKSpriteNode spriteNodeWithImageNamed:@"pauseSound.png"];
+                                                                                     pauseIcon.position = skp(-25,0);
+                                                                                     [buttonNode addChild:pauseIcon];
+                                                                                     pauseIcon.name = @"pause";
                                                                                  }
-                                                                                 
-                                                                                 
+                                                                                 else {
+                                                                                     [rootController.backgroundMusicPlayer play];
+                                                                                     
+                                                                                     [Utility sharedUtility].isSoundAvaliable = YES;
+                                                                                     
+                                                                                     SKSpriteNode *pauseIcon = (SKSpriteNode *)[buttonNode childNodeWithName:@"pause"];
+                                                                                     [pauseIcon removeFromParent];
+                                                                                 }
                                                                              }];
     soundBtn.position = skp(150, 110);
     [self addChild:soundBtn];
     
     SKSpriteButtonNode *parentBtn = [SKSpriteButtonNode buttonNodeWithNormalTexture:[SKTexture textureWithImageNamed:@"parent.png"]
                                                                    selectedTexture:nil
-                                                                             block:^(id sender) {
+                                                                             block:^(SKSpriteButtonNode *buttonNode) {
                                                                                  if ([Utility sharedUtility].isSoundAvaliable) {
                                                                                      [self runAction:[SKAction playSoundFileNamed:kSoundEffectClick
                                                                                                                 waitForCompletion:NO]];
@@ -111,7 +164,7 @@
     
     SKSpriteButtonNode *rateBtn = [SKSpriteButtonNode buttonNodeWithNormalTexture:[SKTexture textureWithImageNamed:@"review.png"]
                                                                     selectedTexture:nil
-                                                                              block:^(id sender) {
+                                                                              block:^(SKSpriteButtonNode *buttonNode) {
                                                                                   if ([Utility sharedUtility].isSoundAvaliable) {
                                                                                       [self runAction:[SKAction playSoundFileNamed:kSoundEffectClick
                                                                                                                  waitForCompletion:NO]];
@@ -128,23 +181,6 @@
                                                                               }];
     rateBtn.position = skp(self.winSize.width*0.5, 110);
     [self addChild:rateBtn];
-}
-
-- (void)loadResource {
-    SKTextureAtlas *OtherAtlas = [SKTextureAtlas atlasNamed:@"Others.atlas"];
-    
-    [SKTextureAtlas preloadTextureAtlases:@[OtherAtlas]
-                    withCompletionHandler:^{
-                        
-                    }];
-}
-
-- (instancetype)initWithSize:(CGSize)size {
-    self = [super initWithSize:size];
-    if (self) {
-        [self loadResource];
-    }
-    return self;
 }
 
 - (void)didMoveToView:(SKView *)view {

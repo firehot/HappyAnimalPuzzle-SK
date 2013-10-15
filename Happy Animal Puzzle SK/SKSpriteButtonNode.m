@@ -11,7 +11,7 @@
 @interface SKSpriteButtonNode () {
     SKTexture *normalTexture_;
     SKTexture *selectedTexture_;
-    void (^block_)(id sender);
+    void (^block_)(SKSpriteButtonNode *buttonNode);
 }
 
 @property (nonatomic, strong) SKTexture *normalTexture;
@@ -48,7 +48,7 @@
     }
     else {
         self.colorBlendFactor = 0.25f;
-        self.color = [UIColor blackColor];
+        self.color = [SKColor blackColor];
     }
 }
 
@@ -84,7 +84,7 @@
 
 + (instancetype)buttonNodeWithNormalTexture:(SKTexture *)normalTexture
                             selectedTexture:(SKTexture *)selectedTexture
-                                     block:(void(^)(id sender))block {
+                                     block:(void(^)(SKSpriteButtonNode *buttonNode))block {
     return [[self alloc] initWithNormalTexture:normalTexture
                                selectedTexture:selectedTexture
                                         block:block];

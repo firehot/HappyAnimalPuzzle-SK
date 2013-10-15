@@ -12,6 +12,6 @@
 
 + (instancetype)buttonNodeWithNormalTexture:(SKTexture *)normalTexture
                             selectedTexture:(SKTexture *)selectedTexture
-                                      block:(void(^)(id sender))block;
+                                      block:(void(^)(SKSpriteButtonNode *buttonNode))block;
 
 @end

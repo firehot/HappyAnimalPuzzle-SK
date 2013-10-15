@@ -8,16 +8,10 @@
 
 #import "ViewController.h"
 #import "MenuScene.h"
-
-@import AVFoundation;
-
-@interface ViewController ()
-
-@property (nonatomic) AVAudioPlayer *backgroundMusicPlayer;
-
-@end
+#import "AppDelegate.h"
 
 @implementation ViewController
+
 
 - (void)viewWillLayoutSubviews
 {
@@ -30,6 +24,8 @@
     self.backgroundMusicPlayer.numberOfLoops = -1;
     [self.backgroundMusicPlayer prepareToPlay];
     [self.backgroundMusicPlayer play];
+    
+    [Utility sharedUtility].isSoundAvaliable = YES;
 
     // Configure the view.
     SKView * skView = (SKView *)self.view;
@@ -41,7 +37,11 @@
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.
-    [skView presentScene:scene];
+    SKTextureAtlas *OtherAtlas = [SKTextureAtlas atlasNamed:@"Others.atlas"];    
+    [SKTextureAtlas preloadTextureAtlases:@[OtherAtlas]
+                    withCompletionHandler:^{
+                        [skView presentScene:scene];
+                    }];
 }
 
 - (BOOL)shouldAutorotate

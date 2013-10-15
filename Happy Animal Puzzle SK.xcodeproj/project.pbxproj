@@ -114,6 +114,7 @@
 		8AE8CD2E1807DC29000DD111 /* Spark.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8AE8CD2C1807DC29000DD111 /* Spark.sks */; };
 		8AFB50521803EE440033585C /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AFB50511803EE440033585C /* Utility.m */; };
 		8AFB50551803F39D0033585C /* LoadingScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AFB50541803F39D0033585C /* LoadingScene.m */; };
+		8AFD3F33180D33E600D60257 /* SKTextureAtlas+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AFD3F32180D33E600D60257 /* SKTextureAtlas+Helper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -250,6 +251,8 @@
 		8AFB50511803EE440033585C /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		8AFB50531803F39D0033585C /* LoadingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingScene.h; sourceTree = "<group>"; };
 		8AFB50541803F39D0033585C /* LoadingScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingScene.m; sourceTree = "<group>"; };
+		8AFD3F31180D33E600D60257 /* SKTextureAtlas+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKTextureAtlas+Helper.h"; sourceTree = "<group>"; };
+		8AFD3F32180D33E600D60257 /* SKTextureAtlas+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKTextureAtlas+Helper.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -346,6 +349,8 @@
 				8A344CC617F93F9E00B915BA /* SKScene+Helper.m */,
 				8A344CC817F9421900B915BA /* SKSpriteButtonNode.h */,
 				8A344CC917F9421900B915BA /* SKSpriteButtonNode.m */,
+				8AFD3F31180D33E600D60257 /* SKTextureAtlas+Helper.h */,
+				8AFD3F32180D33E600D60257 /* SKTextureAtlas+Helper.m */,
 				8ADF5D8717F56D7A00BB6731 /* AppDelegate.h */,
 				8ADF5D8817F56D7A00BB6731 /* AppDelegate.m */,
 				8ADF5D8A17F56D7A00BB6731 /* Main.storyboard */,
@@ -670,6 +675,7 @@
 				8A5046A1180541FF008CD0F6 /* PuzzleBlock.m in Sources */,
 				8ADF5DB717F56EEB00BB6731 /* GameScene.m in Sources */,
 				8ADF5D8517F56D7A00BB6731 /* main.m in Sources */,
+				8AFD3F33180D33E600D60257 /* SKTextureAtlas+Helper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

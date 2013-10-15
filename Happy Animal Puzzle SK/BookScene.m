@@ -13,10 +13,7 @@
 
 @interface BookScene ()
 
-@property (nonatomic) BOOL contentCreated;
-
-@property (nonatomic, strong) SKNode *menuLayer;
-@property (nonatomic, assign) AnimalCategory animalCategory;
+@property (nonatomic) SKNode *menuLayer;
 
 @end
 
@@ -44,45 +41,24 @@
 }
 
 - (void)didMoveToView:(SKView *)view {
-    if (!self.contentCreated) {
-        self.contentCreated = YES;
-        
-        [self createContent];
-    }
-}
-
-- (void)loadTexture {
-    SKTextureAtlas *otherAtlas = [SKTextureAtlas atlasNamed:@"Others.atlas"];
-    SKTextureAtlas *bookMenuAtlas = [SKTextureAtlas atlasNamed:[NSString stringWithFormat:@"BookMenu%d.atlas", self.animalCategory]];
+    [self createContent];
     
-    [SKTextureAtlas preloadTextureAtlases:@[otherAtlas,bookMenuAtlas] withCompletionHandler:^{
-        
-    }];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(removeLock)
+                                                 name:IAPHelperProductPurchasedNotification
+                                               object:nil];
 }
 
-- (instancetype)initWithSize:(CGSize)size
-              animalCategory:(AnimalCategory)category {
-    self = [super initWithSize:size];
-    if (self) {
-        self.animalCategory = category;
-        
-        [self loadTexture];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(removeLock)
-                                                     name:IAPHelperProductPurchasedNotification
-                                                   object:nil];
-    }
-    return self;
-}
-
-+ (instancetype)sceneWithSize:(CGSize)size
-               animalCategory:(AnimalCategory)category {
-    return [[self alloc] initWithSize:size animalCategory:category];
+- (void)willMoveFromView:(SKView *)view {
+    [self removeAllChildren];
+    self.menuLayer = nil;
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)removeLock {
     [self.menuLayer removeFromParent];
+    self.menuLayer = nil;
     
     [self createMenu];
 }
@@ -102,9 +78,8 @@
                                                                                                      waitForCompletion:NO]];
                                                                       }
                                                                       
-                                                                      
                                                                       SKTransition *transition = [SKTransition fadeWithDuration:0.8f];
-                                                                      [self.view presentScene:[MenuScene sceneWithSize:self.size]
+                                                                      [self.view presentScene:self.menuScene
                                                                                    transition:transition];
                                                                   }];
     closeBtn.position = skp(937, 704);
@@ -138,11 +113,21 @@
                                                                                                          waitForCompletion:NO]];
                                                                           }
                                                                           
-                                                                          SKTransition *transition = [SKTransition fadeWithDuration:0.8f];
-                                                                          [self.view presentScene:[GameScene sceneWithSize:self.size
-                                                                                                                 levelData:self.animalCategory
-                                                                                                               animalIndex:i]
-                                                                                       transition:transition];
+                                                                          NSString *animalAtlasName = [NSString stringWithFormat:@"Animal_%d_%d.atlas",
+                                                                                                       self.animalCategory, i];
+                                                                          SKTextureAtlas *animalAtlas = [SKTextureAtlas atlasNamed:animalAtlasName];
+                                                                          [SKTextureAtlas preloadTextureAtlases:@[animalAtlas]
+                                                                                          withCompletionHandler:^{
+                                                                                              SKTransition *transition = [SKTransition fadeWithDuration:0.8f];
+                                                                                              
+                                                                                              GameScene *gameScene = [GameScene sceneWithSize:self.size];
+                                                                                              gameScene.animalCategory = self.animalCategory;
+                                                                                              gameScene.animalIndex = i;
+                                                                                              gameScene.bookScene = self;
+                                                                                              
+                                                                                              [self.view presentScene:gameScene
+                                                                                                           transition:transition];
+                                                                                          }];
                                                                       }
                                                                   }];
         item.position = skp(273 + i/3*490, 570 - i%3*(item.size.height + 15));
@@ -159,10 +144,6 @@
             [item addChild:lock];
         }
     }
-}
-
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - UIAlertViewDelegate

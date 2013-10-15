@@ -8,9 +8,11 @@
 
 #import <SpriteKit/SpriteKit.h>
 
+@class MenuScene;
+
 @interface BookScene : SKScene
 
-+ (instancetype)sceneWithSize:(CGSize)size
-               animalCategory:(AnimalCategory)category;
+@property (nonatomic) AnimalCategory animalCategory;
+@property (nonatomic) MenuScene *menuScene;
 
 @end
