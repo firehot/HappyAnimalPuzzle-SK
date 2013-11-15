@@ -132,7 +132,7 @@
                                                                  
                                                                  [self playNextAnimal];
                                                              }];
-    self.nextBtn.position = skp(self.winSize.width-50, 50);
+    self.nextBtn.position = skp(self.size.width-50, 50);
     self.nextBtn.alpha = 0;
     
     //    CGFloat z = kMenuLayerZ;

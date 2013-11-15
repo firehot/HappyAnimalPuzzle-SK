@@ -159,7 +159,7 @@
                                                                                  [alert show];
                                                                                  alert.tag = kParentAlertTag;
                                                                              }];
-    parentBtn.position = skp(self.winSize.width - 150, 110);
+    parentBtn.position = skp(self.size.width - 150, 110);
     [self addChild:parentBtn];
     
     SKSpriteButtonNode *rateBtn = [SKSpriteButtonNode buttonNodeWithNormalTexture:[SKTexture textureWithImageNamed:@"review.png"]
@@ -179,7 +179,7 @@
                                                                                   [alert show];
                                                                                   alert.tag = kRateAlertTag;
                                                                               }];
-    rateBtn.position = skp(self.winSize.width*0.5, 110);
+    rateBtn.position = skp(self.size.width*0.5, 110);
     [self addChild:rateBtn];
 }
 

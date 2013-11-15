@@ -13,8 +13,6 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
-    #import "SKHelper.h"
-    #import "SKScene+Helper.h"
-    #import "SKSpriteButtonNode.h"
     #import "Utility.h"
+    #import "SpriteKit-Helper.h"
 #endif
